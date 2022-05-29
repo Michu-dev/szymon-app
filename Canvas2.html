@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>TIiSKwE</title>
+    <link rel="stylesheet" type="text/css" href="Layout.css" />
+    <link rel="stylesheet" type="text/css" href="Menu.css" />
+    <style>
+        canvas
+        {
+            border: 1px dashed black;
+            background-color: white;
+        }
+
+        input
+        {
+            color: #F00;
+            background-color: bisque;
+        }
+
+        input.Selected
+        {
+            color: #00F;
+            background-color: antiquewhite;
+        }
+    </style>
+    <script type="text/javascript">
+        var can1;
+        var can2;
+        var cont1;
+        var cont2;
+
+        window.onload = function ()
+        {
+            // do zmienej przypisujemy obiekt canvas
+            can1 = document.getElementById("draw_1");
+            can2 = document.getElementById("draw_2");
+            cont1 = can1.getContext("2d");
+
+            //this.cont1.beginPath();
+            //this.cont1.rect(0, 0, 40, 40);
+            //this.cont1.rect(50, 50, 20, 40);
+            //this.cont1.rect(100, 100, 20, 20);
+            //this.cont1.rect(150, 150, 40, 20);
+            //this.cont1.rect(200, 200, 40, 40);
+            //this.cont1.lineWidth = 5;
+            //this.cont1.strokeStyle = "green";
+            //this.cont1.stroke();
+
+
+            this.cont1.beginPath();
+            this.cont1.rect(0, 0, 40, 40);
+
+            this.cont1.translate(50, 50);
+            this.cont1.scale(0.5, 1);
+            this.cont1.rect(0, 0, 40, 40);
+            this.cont1.scale(2, 1);
+
+            this.cont1.translate(50, 50);
+            this.cont1.scale(0.5, 0.5);
+            this.cont1.rect(0, 0, 40, 40);
+            this.cont1.scale(2, 2);
+
+            this.cont1.translate(50, 50);
+            this.cont1.scale(1, 0.5);
+            this.cont1.rect(0, 0, 40, 40);
+            this.cont1.scale(1, 2);
+
+            this.cont1.translate(50, 50);
+            this.cont1.rect(0, 0, 40, 40);
+
+            this.cont1.lineWidth = 2;
+            this.cont1.strokeStyle = "red";
+            this.cont1.stroke();
+        }
+
+        function rysujKwadraty(ilosc)
+        {
+            // ustwaiamy dwuwymiarowy kontekst graficzny
+            cont2 = can2.getContext("2d");
+            // przenosimy początek współrzędnych na środek płótna
+            cont2.translate(can2.width / 2, can2.height / 2);
+            cont2.beginPath();
+            // obliczamy krok kątowy
+            var katO = (ilosc > 1) ? 2 * Math.PI / (ilosc) : 0;
+            // rysowanie pierwszego kwadratu (dla kąta 0)
+            cont2.rect(0, 0, 60, 60);
+            
+            // rysujemy x kwadratów (domyślnie 10) za pomocą tranformaty obrotowej
+            for (var i = 1; i < ilosc; i++)
+            {
+                // przed narysowaniem kwadratu obraca układ współrzędnych
+                // pełny obrót wynosi 2*Math.PI
+                // ten fragment kodu przesuwa układ o ułamek tej wartości,
+                // więc do czasu wykonania pełnego obrotu narysuje wszystkie kwadraty
+                cont2.rotate(katO);
+                // rysuje pojedynczy kwadrat
+                cont2.rect(0, 0, 60, 60);
+            }
+            cont2.stroke();
+            // przenosimy początek współrzędnych na początek płótna
+            cont2.translate(-can2.width / 2, -can2.height / 2);
+        }
+
+        function wyczyscRysunek()
+        {
+            cont2.clearRect(0, 0, can2.width, can2.height);
+        }
+    </script>
+</head>
+<body>
+    <header style="background-color:aqua">
+        <h1>To jest nagłówek naszej stony WWW</h1>
+    </header>
+    <nav>
+        <h2>Menu:</h2>
+        <ul>
+            <li><a href="Index.html" target="_self">Strona główna</a></li>
+            <li><a href="Tabelka.html" target="_self">Tabela dyżurów</a></li>
+            <li><a href="Info.html" target="_self">Informacje</a></li>
+            <li><a href="Form.html" target="_self">Formularz</a></li>
+            <li><a href="MAP_tag.html" target="_self">Znacznik MAP</a></li>
+            <li><a href="JavaScript1.html" target="_self">JavaScript1</a></li>
+            <li><a href="JavaScript2.html" target="_self">JavaScript2</a></li>
+            <li><a href="JavaScript3.html" target="_self">JavaScript3</a></li>
+            <li><a href="Canvas1.html" target="_self">Canvas1</a></li>
+            <li><a href="Canvas2.html" target="_self">Canvas2</a></li>
+            <li><a href="http://www.put.poznan.pl" target="_blank">Strona PP</a></li>
+            <li><a href="http://www.creef.put.poznan.pl" target="_blank">WARiE</a></li>
+            <li><a href="http://www.isie.put.poznan.pl" target="_blank">WIŚiE</a></li>
+        </ul>
+    </nav>
+    <article>
+        <h2>Przykłady rysowania w znaczniku CANVAS<br />z użyciem transformacji i skalowania</h2>
+        <form>
+            <canvas id="draw_1" width="500" height="300"></canvas>
+            <br /><br />
+            <input type="button" id="draw" value="Rysuj" onclick="rysujKwadraty(how_much.value)" />
+            <input type="number" id="how_much" value="10" min="1" max="100" />
+            <input type="button" id="clear" value="Wyczyść" onclick="wyczyscRysunek();" class="Selected" />
+            <br />
+            <canvas id="draw_2" width="300" height="300"></canvas>
+        </form>
+    </article>
+    <aside>
+        <iframe src="Kontrolki_JS.html">
+        </iframe>
+    </aside>
+    <footer>
+        To jest stopka naszej strony.
+    </footer>
+</body>
+</html>

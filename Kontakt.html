@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>TIiSKwE</title>
+    <link rel="stylesheet" type="text/css" href="Layout.css" />
+    <link rel="stylesheet" type="text/css" href="Menu.css" />
+    <script type="text/javascript">
+        function Employee(surname, name, id, room, phone)
+        {
+            this.surname = surname;
+            this.name = name;
+            this.id = id;
+            this.room = room;
+            this.phone = phone;
+        }
+
+        var Tab_Emp = new Array();
+        Tab_Emp[0] = new Employee('Kowalski', 'Jan', '1.', '111', '(+48)61-666-000-111');
+        Tab_Emp[1] = new Employee('Nowak', 'Maria', '2.', '111', '(+48)61-666-000-111');
+        Tab_Emp[2] = new Employee('Dobry', 'Karol', '3.', '118', '(+48)61-666-000-118');
+        Tab_Emp[3] = new Employee('Chudy', 'Łukasz', '4.', '106', '(+48)61-666-000-106');
+        Tab_Emp[4] = new Employee('Wilk', 'Zofia', '5.', '106', '(+48)61-666-000-106');
+        Tab_Emp[5] = new Employee('Iksiński', 'Damian', '6.', '110', '(+48)61-666-000-110');
+        Tab_Emp[6] = new Employee('Maria', 'Anna', '7.', '113', '(+48)61-666-000-113');
+        Tab_Emp[7] = new Employee('Wysocka', 'Dorota', '8.', '113', '(+48)61-666-000-113');
+        Tab_Emp[8] = new Employee('Michałek', 'Michał', '9.', '113', '(+48)61-666-000-113');
+        Tab_Emp[9] = new Employee('Kobza', 'Andrzej', '10.', '101', '(+48)61-666-000-101');
+
+        function Tab_Emp_Gen(Tab)
+        {
+            var txt = '';
+
+            for (var x = 0; x < Tab.length; x++)
+            {
+                txt += '<tr>';
+                txt += '<td>' + Tab[x].id + '</td>';
+                txt += '<td>' + Tab[x].name + '</td>';
+                txt += '<td>' + Tab[x].surname + '</td>';
+                txt += '<td>' + Tab[x].room + '</td>';
+                txt += '<td>' + Tab[x].phone + '</td>';
+                txt += '</tr>';
+            }
+            var Tab_Body = document.getElementById("records");
+            Tab_Body.innerHTML = txt;
+        }
+    </script>
+    <style>
+        h2
+        {
+            width: 100%;
+            text-align: center;
+        }
+        table
+        {
+            border: 2px solid brown;
+            padding: 0px;
+            border-spacing: 0px;
+        }
+        thead
+        {
+            background-color: red;
+        }
+        tbody
+        {
+            background-color: white;
+        }
+        th, td
+        {
+            border: 1px solid purple;
+            padding: 7px;
+            border-spacing: 0px;
+        }
+    </style>
+</head>
+<body>
+    <header style="background-color:aqua">
+        <h1>To jest nagłówek naszej stony WWW</h1>
+    </header>
+    <nav>
+        <h2>Menu:</h2>
+        <ul>
+            <li><a href="Index.html" target="_self">Strona główna</a></li>
+            <li><a href="Tabelka.html" target="_self">Tabela dyżurów</a></li>
+            <li><a href="Info.html" target="_self">Informacje</a></li>
+            <li><a href="Form.html" target="_self">Formularz</a></li>
+            <li><a href="MAP_tag.html" target="_self">Znacznik MAP</a></li>
+            <li><a href="JavaScript1.html" target="_self">JavaScript1</a></li>
+            <li><a href="JavaScript2.html" target="_self">JavaScript2</a></li>
+            <li><a href="JavaScript3.html" target="_self">JavaScript3</a></li>
+            <li><a href="Canvas1.html" target="_self">Canvas1</a></li>
+            <li><a href="Canvas2.html" target="_self">Canvas2</a></li>
+            <li><a href="http://www.put.poznan.pl" target="_blank">Strona PP</a></li>
+            <li><a href="http://www.creef.put.poznan.pl" target="_blank">WARiE</a></li>
+            <li><a href="http://www.isie.put.poznan.pl" target="_blank">WIŚiE</a></li>
+        </ul>
+    </nav>
+    <article>
+        <h2>Kontakt</h2>
+        <p>
+            Wydział Automatyki, Robotyki i Elektrotechniki
+            <br />
+            Politechnika Poznańska
+            <br /><br />
+            ul. Piotrowo 3A
+            <br />
+            60-965 Poznań
+            <address>
+                www.creef.put.poznan.pl
+                <br />
+                www.put.poznan.pl
+            </address>
+        </p>
+        <div>
+            <h3>Telefony do pracowników</h3>
+            <button type="button" onclick="Tab_Emp_Gen(Tab_Emp);">
+                Pokaż Tabelę
+            </button>
+            <button type="button" onclick="location.reload();">
+                Ukryj Tabelę
+            </button>
+            <br /><br />
+            <table>
+                <thead>
+                    <tr>
+                        <th>Lp.</th>
+                        <th>Imię</th>
+                        <th>Nazwisko</th>
+                        <th>Pokój</th>
+                        <th>Telefon</th>
+                    </tr>
+                </thead>
+                <tbody id="records">
+
+                </tbody>
+            </table>
+        </div>
+    </article>
+    <aside>
+        <iframe src="Kontrolki_JS.html">
+
+        </iframe>
+    </aside>
+    <footer>
+        To jest stopka naszej strony.
+    </footer>
+</body>
+</html>

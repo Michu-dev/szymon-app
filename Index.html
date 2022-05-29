@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>TIiSKwE</title>
+    <link rel="stylesheet" type="text/css" href="Layout.css" />
+    <link rel="stylesheet" type="text/css" href="Menu.css" />
+
+    <link rel="stylesheet" media="screen and (max-width: 480px)" href="smallLayout.css" />
+    <link rel="stylesheet" media="screen and (min-width: 480px)" href="Layout.css" />
+
+    
+    <link rel="stylesheet" media="screen and (max-width: 480px)" href="smallLayout.css" />
+    <link rel="stylesheet" media="screen and (min-width: 480px)" href="Layout.css" />
+
+    <script>
+        var ImgNo = 0;
+        var Tab_Img = new Array(7);
+        Tab_Img[0] = "figure_1.png";
+        Tab_Img[1] = "home_1.png";
+        Tab_Img[2] = "home_2.png";
+        Tab_Img[3] = "home_3.png";
+        Tab_Img[4] = "warie.png";
+        Tab_Img[5] = "wisie.png";
+        Tab_Img[6] = "put.png";
+
+        function Start() {
+            document.getElementById("img_browser").style.visibility = "hidden";
+        }
+
+        function ShowHide() {
+            var Img_Brow = document.getElementById("img_browser");
+            var Btn = document.getElementById("button");
+            if (Img_Brow.style.visibility == "hidden") {
+                Img_Brow.style.visibility = "visible";
+                Btn.value = "Kliknij tutaj żeby ukryć przegladarkę obrazów";
+            }
+            else {
+                Img_Brow.style.visibility = "hidden";
+                Btn.value = "Kliknij tutaj żeby zobaczyć przegladarkę obrazów";
+                ImgNo = 0;
+                document.getElementById("image").src = Tab_Img[ImgNo];
+            }
+        }
+
+        function Next() {
+            if (ImgNo < Tab_Img.length - 1) {
+                ImgNo = ImgNo + 1;
+                document.getElementById("image").src = Tab_Img[ImgNo];
+            }
+            else {
+                document.getElementById("image").src = Tab_Img[Tab_Img.length - 1];
+                ImgNo = Tab_Img.length - 1;
+            }
+        }
+
+        function Prev() {
+            if (ImgNo > 0) {
+                ImgNo = ImgNo - 1;
+                document.getElementById("image").src = Tab_Img[ImgNo];
+            }
+            else {
+                document.getElementById("image").src = Tab_Img[0];
+                ImgNo = 0;
+            }
+        }
+
+        function First() {
+            document.getElementById("image").src = Tab_Img[0];
+            ImgNo = 0;
+        }
+
+        function Last() {
+            document.getElementById("image").src = Tab_Img[Tab_Img.length - 1];
+            ImgNo = Tab_Img.length - 1;
+        }
+    </script>
+    <style>
+        h2 {
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body onload="Start()">
+    <header style="background-color:aqua">
+        <h1>To jest nagłówek naszej stony WWW</h1>
+    </header>
+    <nav>
+        <h2>Menu:</h2>
+        <ul>
+            <li><a href="Index.html" target="_self">Strona główna</a></li>
+            <li><a href="Tabelka.html" target="_self">Tabela dyżurów</a></li>
+            <li><a href="Info.html" target="_self">Informacje</a></li>
+            <li><a href="Form.html" target="_self">Formularz</a></li>
+            <li><a href="MAP_tag.html" target="_self">Znacznik MAP</a></li>
+            <li><a href="JavaScript1.html" target="_self">JavaScript1</a></li>
+            <li><a href="JavaScript2.html" target="_self">JavaScript2</a></li>
+            <li><a href="JavaScript3.html" target="_self">JavaScript3</a></li>
+            <li><a href="Canvas1.html" target="_self">Canvas1</a></li>
+            <li><a href="Canvas2.html" target="_self">Canvas2</a></li>
+            <li><a href="http://www.put.poznan.pl" target="_blank">Strona PP</a></li>
+            <li><a href="http://www.creef.put.poznan.pl" target="_blank">WARiE</a></li>
+            <li><a href="http://www.isie.put.poznan.pl" target="_blank">WIŚiE</a></li>
+        </ul>
+    </nav>
+    <article>
+        <h2>To jest nagłówek części article</h2>
+        <p>
+            Strona tworzona w ramach zajęć laboratoryjnych z TIiSKwE. Strona tworzona w ramach zajęć laboratoryjnych z
+            TIiSKwE. Strona tworzona w ramach zajęć laboratoryjnych z TIiSKwE.
+            Strona tworzona w ramach zajęć laboratoryjnych z TIiSKwE. Strona tworzona w ramach zajęć laboratoryjnych z
+            TIiSKwE. Strona tworzona w ramach zajęć laboratoryjnych z TIiSKwE.
+            <br />
+            Strona tworzona w ramach zajęć laboratoryjnych z TIiSKwE.
+            <br /><br />
+            Strona tworzona w ramach zajęć laboratoryjnych z TIiSKwE.
+        </p>
+        <p style="text-align:center;">
+            <input type="button" onclick="ShowHide()" id="button"
+                value="Kliknij tutaj żeby zobaczyć przegladarkę obrazów" />
+        <div id="img_browser" style="text-align:center; background-image:url(frame.png); width:590px; height: 475px;">
+            <img src="figure_1.png" id="image" height="400" width="400" style="margin-top:60px;">
+            <br /><br />
+            <button onclick="First()" style="width:95px; background-color:lightgray;"> |&lArr; <br /> Pierwszy </button>
+            <button onclick="Prev()" style="width:95px; background-color:lightgray;"> &lArr; <br /> Poprzedni </button>
+            <button onclick="Next()" style="width:95px; background-color:lightgray;"> &rArr; <br /> Następny </button>
+            <button onclick="Last()" style="width:95px; background-color:lightgray;"> &rArr;| <br /> Ostatni </button>
+        </div>
+        </p>
+    </article>
+    <aside>
+        <iframe src="Kontrolki_JS.html">
+
+        </iframe>
+    </aside>
+    <footer>
+        To jest stopka naszej strony.
+    </footer>
+</body>
+
+</html>

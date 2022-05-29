@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Kontrolki JS</title>
+    <script type="text/javascript" src="Button_Change.js"></script>
+    <script type="text/javascript" src="Text_Slider.js"></script>
+    <script type="text/javascript" src="Clock.js"></script>
+    <script type="text/javascript" src="Timer.js"></script>
+    <style>
+        section.javaScript {
+            width: 100%;
+            margin: 0px;
+            padding: 0px;
+            background-color: orange;
+        }
+
+        #java1 div.unpressed {
+            background-image: url("unpressed.png");
+            background-repeat: no-repeat;
+            width: 180px;
+            height: 40px;
+            color: darkblue;
+            text-align: center;
+            padding-top: 10px;
+            font-weight: bold;
+        }
+
+        #java1 div.pressed {
+            background-image: url("pressed.png");
+            background-repeat: no-repeat;
+            width: 180px;
+            height: 40px;
+            color: lightblue;
+            text-align: center;
+            padding-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body onload="startclock(); starttimer();">
+    <section class="javaScript" id="java1">
+        <h2>Dynamiczne przyciski</h2>
+        <div id="startBtn" class="unpressed"
+             onmouseover="Class_Change('startBtn', 'pressed');"
+             onmouseout="Class_Change('startBtn', 'unpressed');"
+             onclick="work = true; slider();">
+            Start
+        </div>
+        <div id="stopBtn" class="unpressed"
+             onmouseover="Class_Change('stopBtn', 'pressed');"
+             onmouseout="Class_Change('stopBtn', 'unpressed');"
+             onclick="work = false;">
+            Stop
+        </div>
+        <input type="text" value="ruchomy tekst..." id="rTekst" />
+    </section>
+    <section class="javaScript" id="java2">
+        <h2>Zegarek</h2>
+        Aktualna data:<br />
+        <input type="text" id="date" value="00-00-00" 
+               style="background:none; border:none;
+                      font-weight:bold; text-align:center" />
+        Aktualny czas:<br />
+        <input type="text" id="clock" value="00:00:00" 
+               style="background:none; border:none;
+                      font-weight:bold; text-align:center" />
+        <br />
+        Czas na stronie:<br />
+        <input type="text" id="myTimer" value="0.00" 
+               style="background:none; border:none;
+                      font-weight:bold; text-align:center" />
+        <br />
+    </section>
+</body>
+</html>

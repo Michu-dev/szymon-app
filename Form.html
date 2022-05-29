@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>TIiSKwE</title>
+    <link rel="stylesheet" type="text/css" href="Layout.css" />
+    <link rel="stylesheet" type="text/css" href="Menu.css" />
+</head>
+<body>
+    <header style="background-color:aqua">
+        <h1>To jest nagłówek naszej stony WWW</h1>
+    </header>
+    <nav>
+        <h2>Menu:</h2>
+        <ul>
+            <li><a href="Index.html" target="_self">Strona główna</a></li>
+            <li><a href="Tabelka.html" target="_self">Tabela dyżurów</a></li>
+            <li><a href="Info.html" target="_self">Informacje</a></li>
+            <li><a href="Form.html" target="_self">Formularz</a></li>
+            <li><a href="MAP_tag.html" target="_self">Znacznik MAP</a></li>
+            <li><a href="JavaScript1.html" target="_self">JavaScript1</a></li>
+            <li><a href="JavaScript2.html" target="_self">JavaScript2</a></li>
+            <li><a href="JavaScript3.html" target="_self">JavaScript3</a></li>
+            <li><a href="Canvas1.html" target="_self">Canvas1</a></li>
+            <li><a href="Canvas2.html" target="_self">Canvas2</a></li>
+            <li><a href="http://www.put.poznan.pl" target="_blank">Strona PP</a></li>
+            <li><a href="http://www.creef.put.poznan.pl" target="_blank">WARiE</a></li>
+            <li><a href="http://www.isie.put.poznan.pl" target="_blank">WIŚiE</a></li>
+        </ul>
+    </nav>
+    <article>
+        <h2>Kwestionariusz osobowy</h2>
+        <form action="mailto: imie.nazwisko@put.poznan.pl" method="post" enctype="text/plain">
+            <p>
+                <i><b>Wypełnij poniższy formularz i prześlij go do nas.</b></i>
+                <br />
+                Obwiązkowe pola oznaczono znakiem (<em>*</em>).
+            </p>
+            <fieldset>
+                <legend>Dane kontaktowe</legend>
+                <label for="imie">Imię<em>*</em></label>
+                <input id="imie" name="name" placeholder="Podaj imię" autofocus required />
+                <br />
+                <label for="">Nazwisko<em>*</em></label>
+                <input id="nazwisko" name="surname" placeholder="Podaj nazwisko" required />
+                <br />
+                <label for="telefon">Nr telefonu</label>
+                <input id="telefon" name="phone" placeholder="(+48)xxx-xxx-xxx" />
+                <br />
+                <label for="">E-mail<em>*</em></label>
+                <input id="mail" name="email" type="email" required />
+                <br />
+            </fieldset>
+            <fieldset>
+                <legend>Szczegółowe dane osobowe</legend>
+                <label for="birth_date">Data urodzenia</label>
+                <input type="date" id="birth_date" name="birth_1" plecholder="dd.mm.rrrr"><br />
+                <p>
+                    <label>Płeć</label><br />
+                    <label for="sex_1"><input type="radio" id="sex_1" name="sex" value="woman">Kobieta</label><br />
+                    <label for="sex_2"><input type="radio" id="sex_2" name="sex" value="man">Mężczyzna</label><br />
+                    <label for="sex_3"><input type="radio" id="sex_3" name="sex" value="other" checked>Inna</label><br />
+                </p>
+                    <label for="region">Region zamieszkania<em>*</em></label>
+                <select id="region">
+                    <option value="dolnoslaskie">dolnośląskie</option>
+                    <option value="kujawsko-pomorskie">kujawsko-pomorskie</option>
+                    <option value="lubelskie">lubelskie</option>
+                    <option value="lubuskie">lubuskie</option>
+                    <option value="lodzkie">łódzkie</option>
+                    <option value="malopolskie">małopolskie</option>
+                    <option value="mazowieckie">mazowieckie</option>
+                    <option value="opolskie">opolskie</option>
+                    <option value="podkarpackie">podkarpackie</option>
+                    <option value="podlaskie">podlaskie</option>
+                    <option value="pomorskie">pomorskie</option>
+                    <option value="slaskie">śląskie</option>
+                    <option value="swietokrzyskie">świętokrzyskie</option>
+                    <option value="warminsko-mazurskie">warmińsko-mazurskie</option>
+                    <option value="wielkopolskie">wielkopolskie</option>
+                    <option value="zachodniopomorskie">zachodniopomorskie</option>
+                </select>
+            </fieldset>
+            <fieldset>
+                <legend>IQ test</legend>
+                <label for="sqrt2">Pierwiastek z 2:<em>*</em></label>
+                <input type="number" id="sqrt2" min="1" max="2" step="0.01" required><br />
+                <label for="sqrt3">Pierwiastek z 3:<em>*</em></label>
+                <input type="number" id="sqrt3" min="1" max="2" step="0.1" required><br />
+                <label for="euler">Liczba Eulera:<em>*</em></label>
+                <input type="number" id="euler" min="2" max="3" step="0.1" required><br />
+                <label for="pi">Liczba Pi:<em>*</em></label>
+                <input type="number" id="pi" min="3" max="4" step="0.01" required><br />
+                <label for="continent">Bezludny kontynent:<em>*</em></label>
+                <input type="text" list="continent" name="land" required>
+                <datalist id="continent">
+                    <option value="Afryka">
+                    <option value="Ameryka Południowa">
+                    <option value="Ameryka Północna">
+                    <option value="Antarktyda">
+                    <option value="Australia">
+                    <option value="Azja">
+                    <option value="Europa">
+                </datalist>
+            </fieldset>
+            <fieldset>
+                <legend>Twoja ocena</legend>
+                <p>
+                    6 - to celująco<br />
+                    1 - to niedostatecznie<br />
+                    <input type="range" id="rating" name="rate" min="1" max="6"><br />
+                    <label for="rating">1 &nbsp;&nbsp; 2 &nbsp;&nbsp; 3 &nbsp;&nbsp; 4 &nbsp;&nbsp; 5 &nbsp;&nbsp; 6</label>
+                </p>
+                <p>
+                    <label for="comment">Dlaczego tak oceniasz?<em>*</em></label><br>
+                    <textarea id="comment" oninput="validateComments(this)" required></textarea>
+                </p>
+            </fieldset>
+            <fieldset>
+                <legend>Załącznik</legend>
+                <label for="plik">Prześlij swoje CV</label>
+                <input type="file" id="plik" name="file" accept=".pdf" />
+            </fieldset>
+            <fieldset>
+                <legend>Zgody i Regulaminy</legend>
+                <label for="statute"><input type="checkbox" id="statute" name="statute_1" checked required>Zapoznałem się i akceptuję Regulamin.<em>*</em>(pole obowiązkowe)</label> <br>
+                <label for="rodo_OK"><input type="checkbox" id="rodo_OK" name="rodo_1" required>Wyrażam zgodę na przetwarzanie danych osobowych.<em>*</em>(pole obowiązkowe)</label> <br>
+                <label for="mail_OK"><input type="checkbox" id="mail_OK" name="e-mail_1" required>Marketing przez E-mail (opcjonalnie)</label> <br>
+                <label for="sms_OK"><input type="checkbox" id="sms_OK" name="sms_1" required>Marketing przez SMS (opcjonalnie)</label> <br>
+                <label for="call_OK"><input type="checkbox" id="call_OK" name="call_1">Marketing przez połączenie telefoniczne (opcjonalnie)</label> <br>
+            </fieldset>
+            <p>
+                <input type="submit" value="Wyślij formularz" />
+                <input type="reset" value="Kasuj dane w formuarzu" />
+            </p>
+        </form>
+    </article>
+    <aside>
+        <iframe src="Kontrolki_JS.html">
+        </iframe>
+    </aside>
+    <footer>
+        To jest stopka naszej strony.
+    </footer>
+</body>
+</html>

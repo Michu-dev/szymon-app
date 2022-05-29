@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>TIiSKwE</title>
+    <!-- <link rel="stylesheet" type="text/css" href="Layout.css" />
+    <link rel="stylesheet" type="text/css" href="Menu.css" /> -->
+
+    <link rel="stylesheet" media="screen and (max-width: 480px)" href="smallLayout.css" />
+    <link rel="stylesheet" media="screen and (min-width: 480px)" href="Layout.css" />
+
+    
+    <link rel="stylesheet" media="screen and (max-width: 480px)" href="smallMenu.css" />
+    <link rel="stylesheet" media="screen and (min-width: 480px)" href="Menu.css" />
+    <style type="text/css">
+        #calculator
+        {
+            text-align: center;
+            margin: auto;
+            border: 2px solid black;
+            padding: 10px;
+            width: 467px;
+            background-color: lightgrey;
+        }
+        
+        #calculator .number
+        {
+            text-align: center;
+            border: none;
+            padding: 10px;
+            width: 85px;
+            background-color: white;
+        }
+        
+        #calculator #operator
+        {
+            text-align: center;
+            margin: 17px 5px 0px 5px;
+            padding: 8px;
+            width: 55px;
+            background-color: darkgrey;
+        }
+        
+        #calculator #operator:hover
+        {
+            background-color: grey;
+        }
+        
+        #calculator .result
+        {
+            margin: 1px 5px 2px 5px;
+            border: none;
+            padding: 10px;
+            width: 55px;
+            background-color: darkgrey;
+        }
+        
+        #calculator .result:hover
+        {
+            background-color: grey;
+        }            
+    </style>
+    <script type="text/javascript">
+        function Calculator()
+        {
+            var a = parseFloat(document.getElementById('a').value);
+            var b = parseFloat(document.getElementById('b').value);
+            var oper = document.getElementById('operator').value;
+
+            
+
+            switch (oper)
+            {
+                case '+': var result = (a) + (b);
+                    break;
+                case '-': var result = (a) - (b);
+                    break;
+                case '*': var result = (a) * (b);
+                    break;
+                case '/': var result = (a) / (b);
+                    break;
+            }
+
+            document.getElementById('result').value = result;
+        }
+    </script>
+</head>
+<body>
+    <header style="background-color:aqua">
+        <h1>To jest nagłówek naszej stony WWW</h1>
+    </header>
+    <nav>
+        <h2>Menu:</h2>
+        <ul>
+            <li><a href="Index.html" target="_self">Strona główna</a></li>
+            <li><a href="Tabelka.html" target="_self">Tabela dyżurów</a></li>
+            <li><a href="Info.html" target="_self">Informacje</a></li>
+            <li><a href="Form.html" target="_self">Formularz</a></li>
+            <li><a href="MAP_tag.html" target="_self">Znacznik MAP</a></li>
+            <li><a href="JavaScript1.html" target="_self">JavaScript1</a></li>
+            <li><a href="JavaScript2.html" target="_self">JavaScript2</a></li>
+            <li><a href="JavaScript3.html" target="_self">JavaScript3</a></li>
+            <li><a href="Canvas1.html" target="_self">Canvas1</a></li>
+            <li><a href="Canvas2.html" target="_self">Canvas2</a></li>
+            <li><a href="http://www.put.poznan.pl" target="_blank">Strona PP</a></li>
+            <li><a href="http://www.creef.put.poznan.pl" target="_blank">WARiE</a></li>
+            <li><a href="http://www.isie.put.poznan.pl" target="_blank">WIŚiE</a></li>
+        </ul>
+    </nav>
+    <article>
+        <h2>Przykłady użycia sktryptów Java - część II</h2>
+        <script type="text/javascript">
+            var zmienna = "Ala Ma Kota.";
+
+            document.write(zmienna + "<br/>");
+            document.write("Zdanie ma " + zmienna.length + " znaków.<br/>");
+
+            document.write(zmienna.charAt(4) + "<br/>");
+            document.write(zmienna.charAt(zmienna.length - 3) + "<br/>");
+
+            document.write(zmienna.toUpperCase() + "<br/>");
+            document.write(zmienna.toLowerCase() + "<br/>");
+
+            document.write(zmienna.substring(0, 3) + "<br/>");
+            document.write(zmienna.substring(7) + "<br/>");
+
+            for (var i = 0; i < zmienna.length; i++) {
+                for (var j = 0; j < i; j++) {
+                    document.write("&nbsp;&nbsp;&nbsp;");
+                }
+                document.write(zmienna.charAt(i) + "<br/>");
+            }
+        </script>
+        <br />
+        <br />
+        <form id="calculator">
+            <h4>Prosty Przelicznik Podatkowy</h4>
+            <table>
+                <tr>
+                    <td>
+                        <input type="text" id="a" class="number" placeholder="Liczba A" />
+                    </td>
+                    <!-- <td>
+                        <select id="operator">
+                            <option value="+">+</option>
+                            <option value="-">-</option>
+                            <option value="*">*</option>
+                            <option value="/">/</option>
+                        </select><br /><br />
+                    </td> -->
+                    <td>
+                        <input type="text" id="b" class="number" placeholder="Liczba B" />
+                    </td>
+                    <td>
+                        <button type="button" class="result" onclick="Calculator()">=</button>
+                    </td>
+                    <td>
+                        <input type="text" id="result" class="number" placeholder="Wynik" disabled="disabled" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <button type="reset" class="result" style="width: 200px" ">R e s e t</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </article>
+    <aside>
+        <iframe src="Kontrolki_JS.html">
+        </iframe>
+    </aside>
+    <footer>
+        To jest stopka naszej strony.
+    </footer>
+</body>
+</html>

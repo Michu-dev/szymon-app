@@ -1,0 +1,233 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Tabela w HTML</title>
+    <link rel="stylesheet" type="text/css" href="Layout.css" />
+    <link rel="stylesheet" type="text/css" href="Menu.css" />
+    <style>
+        /* selektor elemnetu po id*/
+        #PoleTabeli
+        {
+            width: 666px;
+            height: 444px;
+            border: 0px;
+            padding: 0px;
+            margin: auto;
+            background-color: lightgreen;
+        }
+
+        /*Zadanie Domowe*/
+        /* symbol "*" -> selektor wszystkich elementów w pliku */
+        * {
+            font-family: Times New Roman;
+        }
+
+        table {
+            /*margines wewnętrzy pomiędzy obramowaniem, a zawartością*/
+            padding: 0px;
+            border-spacing: 0px;
+            text-align: center;
+            background-color: lightblue;
+        }
+
+        /*selektor kilku elementów, nie jest istotna relacja pomiędzy nimi*/
+        table, td, th {
+            border: 1px solid black;
+        }
+
+        /*selektor potomka: styl zadziała na wszystkich th zagnieżdzonych w tr*/
+        tr th {
+            /*definicja czcionki*/
+            font-family: Cambria;
+            font-style: italic;
+            font-weight: bolder;
+            font-size: 13px;
+            /*color komórkach tabeli odpowiada za kolor tekstu i obramowania,
+                jeżeli nie jest ustawiony border-color*/
+            color: red;
+            padding: 3px;
+            background-color: orange
+        }
+
+        tr td {
+            font-family: Calibri;
+            font-weight: lighter;
+            font-size: smaller;
+            color: green;
+            border-color: yellow;
+            padding: 5px;
+        }
+
+        /*selektor elementów wybranej klasy (atrybut class): .nazwaKlasy*/
+        th.godziny {
+            width: 18px;
+        }
+
+        td.wolny {
+            background-color: gray;
+        }
+
+        td.zajety {
+            background-color: pink;
+            color: black;
+        }
+
+        tbody #name {
+            color: blue;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <header style="background-color:yellow; border:3px dashed blue">
+        <h1>To jest nagłówek naszej stony WWW</h1>
+    </header>
+    <nav>
+        <h2>Menu:</h2>
+        <ul>
+            <li><a href="Index.html" target="_self">Strona główna</a></li>
+            <li><a href="Tabelka.html" target="_self">Tabela dyżurów</a></li>
+            <li><a href="Info.html" target="_self">Informacje</a></li>
+            <li><a href="Form.html" target="_self">Formularz</a></li>
+            <li><a href="MAP_tag.html" target="_self">Znacznik MAP</a></li>
+            <li><a href="JavaScript1.html" target="_self">JavaScript1</a></li>
+            <li><a href="JavaScript2.html" target="_self">JavaScript2</a></li>
+            <li><a href="JavaScript3.html" target="_self">JavaScript3</a></li>
+            <li><a href="Canvas1.html" target="_self">Canvas1</a></li>
+            <li><a href="Canvas2.html" target="_self">Canvas2</a></li>
+            <li><a href="http://www.put.poznan.pl" target="_blank">Strona PP</a></li>
+            <li><a href="http://www.creef.put.poznan.pl" target="_blank">WARiE</a></li>
+            <li><a href="http://www.isie.put.poznan.pl" target="_blank">WIŚiE</a></li>
+        </ul>
+    </nav>
+    <article>
+        <div id="PoleTabeli">
+            <h2>Tabela dyżurów pracowników</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th rowspan="2">Lp.</th>
+                        <th colspan="2">Pracownik</th>
+                        <th rowspan="2">Pokój</th>
+                        <th colspan="12">Godziny</th>
+                    </tr>
+                    <tr>
+                        <th rowspan="2">Imię</th>
+                        <th rowspan="2">Nazwisko</th>
+                        <th class="godziny">7</th>
+                        <th class="godziny">8</th>
+                        <th class="godziny">9</th>
+                        <th class="godziny">10</th>
+                        <th class="godziny">11</th>
+                        <th class="godziny">12</th>
+                        <th class="godziny">13</th>
+                        <th class="godziny">14</th>
+                        <th class="godziny">15</th>
+                        <th class="godziny">16</th>
+                        <th class="godziny">17</th>
+                        <th class="godziny">18</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1.</td>
+                        <td id="name">Jan</td>
+                        <td id="name">Kowalski</td>
+                        <td rowspan="2">111</td>
+                        <td colspan="3" class="zajety">7:00-10:00</td>
+                        <td colspan="9" class="wolny"></td>
+                    </tr>
+                    <tr>
+                        <td>2.</td>
+                        <td id="name">Maria</td>
+                        <td id="name">Nowak</td>
+                        <td colspan="6" class="wolny"></td>
+                        <td colspan="6" class="zajety">13:00-19:00</td>
+                    </tr>
+                    <tr>
+                        <td>3.</td>
+                        <td id="name">Karol</td>
+                        <td id="name">Dobry</td>
+                        <td>118</td>
+                        <td colspan="6" class="zajety">7:30-13:00</td>
+                        <td colspan="6" class="wolny"></td>
+                    </tr>
+                    <tr>
+                        <td>4.</td>
+                        <td id="name">Łukasz</td>
+                        <td id="name">Chudy</td>
+                        <td rowspan="2">106</td>
+                        <td colspan="3" class="zajety">7:00-10:00</td>
+                        <td colspan="3" class="wolny"></td>
+                        <td colspan="3" class="zajety">13:00-16:00</td>
+                        <td colspan="3" class="wolny"></td>
+                    </tr>
+                    <tr>
+                        <td>5.</td>
+                        <td id="name">Zofia</td>
+                        <td id="name">Wilk</td>
+                        <td colspan="8" class="zajety">7:00-15:00</td>
+                        <td colspan="4" class="wolny"></td>
+                    </tr>
+                    <tr>
+                        <td>6.</td>
+                        <td id="name">Damian</td>
+                        <td id="name">Iksiński</td>
+                        <td>110</td>
+                        <td colspan="4" class="wolny"></td>
+                        <td colspan="8" class="zajety">11:00-19:00</td>
+                    </tr>
+                    <tr>
+                        <td>7.</td>
+                        <td id="name">Anna</td>
+                        <td id="name">Maria</td>
+                        <td rowspan="3">113</td>
+                        <td colspan="3" class="zajety">7:00-10:00</td>
+                        <td colspan="1" class="wolny"></td>
+                        <td colspan="3" class="zajety">11:00-14:00</td>
+                        <td colspan="2" class="wolny"></td>
+                        <td colspan="3" class="zajety">16:00-19:00</td>
+                    </tr>
+                    <tr>
+                        <td>8.</td>
+                        <td id="name">Dorota</td>
+                        <td id="name">Wysocka</td>
+                        <td colspan="5" class="zajety">7:00-12:00</td>
+                        <td colspan="4" class="wolny"></td>
+                        <td colspan="3" class="zajety">16:00-19:00</td>
+                    </tr>
+                    <tr>
+                        <td>9.</td>
+                        <td id="name">Michał</td>
+                        <td id="name">Michałek</td>
+                        <td colspan="2" class="wolny"></td>
+                        <td colspan="4" class="zajety">9:00-13:00</td>
+                        <td colspan="2" class="wolny"></td>
+                        <td colspan="4" class="zajety">15:00-19:00</td>
+                    </tr>
+                    <tr>
+                        <td>10.</td>
+                        <td id="name">Andrzej</td>
+                        <td id="name">Kobza</td>
+                        <td>101</td>
+                        <td colspan="2" class="wolny"></td>
+                        <td colspan="3" class="zajety">9:00-12:00</td>
+                        <td colspan="2" class="wolny"></td>
+                        <td colspan="3" class="zajety">14:00-17:00</td>
+                        <td colspan="2" class="wolny"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </article>
+    <aside>
+        <iframe src="Kontrolki_JS.html">
+        </iframe>
+    </aside>
+    <footer>
+        To jest stopka naszej strony.
+    </footer>
+</body>
+</html>

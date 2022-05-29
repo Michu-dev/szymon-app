@@ -1,0 +1,56 @@
+body
+{
+    width:450px;
+    height:400px;
+    margin:auto;
+}
+nav, article, aside
+{
+    display:block;
+    float:left;
+}
+nav
+{
+    background:#66ccff;
+    width:100px;
+    height:314px;
+}
+body > article
+{
+    width:390px;
+    height:300px;
+    padding:2px;
+    border:1px solid gray;
+    background:radial-gradient(circle at 200px 250px, #3bf 5%, #9df 15%, #6cf 70%);
+    overflow:auto;
+}
+body > header
+{
+    width:598px;
+    height:50px;
+    background-color:dodgerblue;
+    text-align:center;
+    padding-top:5px;
+    border:1px solid brown;
+}
+aside
+{
+    width:100px;
+    height:414px;
+    background-color:ActiveCaption;
+}
+body > footer
+{
+    border-width:8px 6px 4px 2px;
+    border-style:dotted;
+    border-color:green;
+    height:40px;
+    width:596px;
+    float:left;
+}
+iframe
+{
+    width:100%;
+    height:100%;
+    border:none;
+}

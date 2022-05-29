@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>TIiSKwE</title>
+    <link rel="stylesheet" type="text/css" href="Layout.css" />
+    <link rel="stylesheet" type="text/css" href="Menu.css" />
+    <script type="text/javascript">
+        function Komunikat(c, d)
+        {
+            wynik = c + d;
+            alert("Wynik dodawania: " + wynik);
+        }
+    </script>
+</head>
+<body>
+    <header style="background-color:aqua">
+        <h1>To jest nagłówek naszej stony WWW</h1>
+    </header>
+    <nav>
+        <h2>Menu:</h2>
+        <ul>
+            <li><a href="Index.html" target="_self">Strona główna</a></li>
+            <li><a href="Tabelka.html" target="_self">Tabela dyżurów</a></li>
+            <li><a href="Info.html" target="_self">Informacje</a></li>
+            <li><a href="Form.html" target="_self">Formularz</a></li>
+            <li><a href="MAP_tag.html" target="_self">Znacznik MAP</a></li>
+            <li><a href="JavaScript1.html" target="_self">JavaScript1</a></li>
+            <li><a href="JavaScript2.html" target="_self">JavaScript2</a></li>
+            <li><a href="JavaScript3.html" target="_self">JavaScript3</a></li>
+            <li><a href="Canvas1.html" target="_self">Canvas1</a></li>
+            <li><a href="Canvas2.html" target="_self">Canvas2</a></li>
+            <li><a href="http://www.put.poznan.pl" target="_blank">Strona PP</a></li>
+            <li><a href="http://www.creef.put.poznan.pl" target="_blank">WARiE</a></li>
+            <li><a href="http://www.isie.put.poznan.pl" target="_blank">WIŚiE</a></li>
+        </ul>
+    </nav>
+    <article>
+        <h2>Przykłady użycia sktryptów Java - część III</h2>
+        <script type="text/javascript">
+            //Komunikat(9, 16);
+
+            //txt = prompt('Podaj nazwisko');
+            //if (txt == 'Kowalski')
+            //{
+            //    alert('Dobrze :)');
+            //}
+            //else
+            //{
+            //    alert('Źle :(');
+            //}
+
+            //odp = confirm('Czy kończymy pracę?');
+            //if (odp == true)
+            //{
+            //    alert('YES');
+            //}
+            //else
+            //{
+            //    alert('NO');
+            //}
+
+            //while (confirm('Czy powtórzyć?') == true)
+            //{ };
+
+            x = 3;
+            y = 5;
+            z = Math.sqrt(y) + x * Math.PI;
+            document.write('Wynik skomplikowanych obliczeń to: ' + z + '<br/>');
+        </script>
+    </article>
+    <aside>
+        <iframe src="Kontrolki_JS.html">
+        </iframe>
+    </aside>
+    <footer>
+        To jest stopka naszej strony.
+    </footer>
+</body>
+</html>
