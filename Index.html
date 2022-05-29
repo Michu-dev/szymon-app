@@ -5,26 +5,62 @@
 <head>
     <meta charset="utf-8" />
     <title>TIiSKwE</title>
-    <link rel="stylesheet" type="text/css" href="Layout.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="Layout.css" /> -->
     <link rel="stylesheet" type="text/css" href="Menu.css" />
 
-    <link rel="stylesheet" media="screen and (max-width: 480px)" href="smallLayout.css" />
-    <link rel="stylesheet" media="screen and (min-width: 480px)" href="Layout.css" />
+    <link rel="stylesheet" media="screen and (max-width: 660px)" href="smallLayout.css" />
+    <link rel="stylesheet" media="screen and (min-width: 660px)" href="Layout.css" />
 
-    
+
+    <!--     
     <link rel="stylesheet" media="screen and (max-width: 480px)" href="smallLayout.css" />
-    <link rel="stylesheet" media="screen and (min-width: 480px)" href="Layout.css" />
+    <link rel="stylesheet" media="screen and (min-width: 480px)" href="Layout.css" /> -->
 
     <script>
         var ImgNo = 0;
-        var Tab_Img = new Array(7);
-        Tab_Img[0] = "figure_1.png";
-        Tab_Img[1] = "home_1.png";
-        Tab_Img[2] = "home_2.png";
-        Tab_Img[3] = "home_3.png";
-        Tab_Img[4] = "warie.png";
-        Tab_Img[5] = "wisie.png";
-        Tab_Img[6] = "put.png";
+        var Tab_Img = new Array(5);
+        Tab_Img[0] = "slide_1.png";
+        Tab_Img[1] = "slide_2.png";
+        Tab_Img[2] = "slide_3.png";
+        Tab_Img[3] = "slide_4.png";
+        Tab_Img[4] = "slide_5.png";
+
+        // left arrow
+        document.addEventListener("keydown", function (e) {
+            if (e.keyCode === 37) {
+                e.preventDefault();
+                Prev();
+            }
+        });
+
+        // down arrow
+        document.addEventListener("keydown", function (e) {
+            if (e.keyCode === 40) {
+                e.preventDefault();
+                Last();
+            }
+        });
+
+        // up arrow
+        document.addEventListener("keydown", function (e) {
+            if (e.keyCode === 38) {
+                e.preventDefault();
+                First();
+            }
+        });
+
+        // right arrow
+        document.addEventListener("keydown", function (e) {
+            if (e.keyCode === 39) {
+                e.preventDefault();
+                Next();
+            }
+        });
+
+        function validate(e) {
+            var text = e.target.value;
+            alert(text);
+        }
 
         function Start() {
             document.getElementById("img_browser").style.visibility = "hidden";
@@ -35,11 +71,11 @@
             var Btn = document.getElementById("button");
             if (Img_Brow.style.visibility == "hidden") {
                 Img_Brow.style.visibility = "visible";
-                Btn.value = "Kliknij tutaj żeby ukryć przegladarkę obrazów";
+                Btn.value = "Kliknij tutaj żeby ukryć prezentację";
             }
             else {
                 Img_Brow.style.visibility = "hidden";
-                Btn.value = "Kliknij tutaj żeby zobaczyć przegladarkę obrazów";
+                Btn.value = "Kliknij tutaj żeby zobaczyć prezentację";
                 ImgNo = 0;
                 document.getElementById("image").src = Tab_Img[ImgNo];
             }
@@ -76,6 +112,10 @@
             document.getElementById("image").src = Tab_Img[Tab_Img.length - 1];
             ImgNo = Tab_Img.length - 1;
         }
+
+
+
+
     </script>
     <style>
         h2 {
@@ -85,60 +125,55 @@
     </style>
 </head>
 
-<body onload="Start()">
+<body onload="Start()" id="first">
     <header style="background-color:aqua">
-        <h1>To jest nagłówek naszej stony WWW</h1>
+        <h1>Poznańska benzyna</h1>
     </header>
     <nav>
         <h2>Menu:</h2>
         <ul>
             <li><a href="Index.html" target="_self">Strona główna</a></li>
-            <li><a href="Tabelka.html" target="_self">Tabela dyżurów</a></li>
+            <li><a href="Tabelka.html" target="_self">Najtańsze stacje</a></li>
             <li><a href="Info.html" target="_self">Informacje</a></li>
             <li><a href="Form.html" target="_self">Formularz</a></li>
             <li><a href="MAP_tag.html" target="_self">Znacznik MAP</a></li>
             <li><a href="JavaScript1.html" target="_self">JavaScript1</a></li>
-            <li><a href="JavaScript2.html" target="_self">JavaScript2</a></li>
+            <li><a href="Przelicznik.html" target="_self">Przelicznik</a></li>
             <li><a href="JavaScript3.html" target="_self">JavaScript3</a></li>
-            <li><a href="Canvas1.html" target="_self">Canvas1</a></li>
-            <li><a href="Canvas2.html" target="_self">Canvas2</a></li>
-            <li><a href="http://www.put.poznan.pl" target="_blank">Strona PP</a></li>
-            <li><a href="http://www.creef.put.poznan.pl" target="_blank">WARiE</a></li>
-            <li><a href="http://www.isie.put.poznan.pl" target="_blank">WIŚiE</a></li>
+            <li><a href="Logo.html" target="_self">Logo firmy</a></li>
+            <li><a href="Konkurs.html" target="_self">Konkurs na nowe logo</a></li>
+            
         </ul>
     </nav>
     <article>
-        <h2>To jest nagłówek części article</h2>
+        <h2>Prezentacja</h2>
         <p>
-            Strona tworzona w ramach zajęć laboratoryjnych z TIiSKwE. Strona tworzona w ramach zajęć laboratoryjnych z
-            TIiSKwE. Strona tworzona w ramach zajęć laboratoryjnych z TIiSKwE.
-            Strona tworzona w ramach zajęć laboratoryjnych z TIiSKwE. Strona tworzona w ramach zajęć laboratoryjnych z
-            TIiSKwE. Strona tworzona w ramach zajęć laboratoryjnych z TIiSKwE.
-            <br />
-            Strona tworzona w ramach zajęć laboratoryjnych z TIiSKwE.
-            <br /><br />
-            Strona tworzona w ramach zajęć laboratoryjnych z TIiSKwE.
+            Strona tworzona w ramach projektu z TIiSKwE.
         </p>
         <p style="text-align:center;">
             <input type="button" onclick="ShowHide()" id="button"
-                value="Kliknij tutaj żeby zobaczyć przegladarkę obrazów" />
+                value="Kliknij tutaj żeby zobaczyć prezentację" />
         <div id="img_browser" style="text-align:center; background-image:url(frame.png); width:590px; height: 475px;">
-            <img src="figure_1.png" id="image" height="400" width="400" style="margin-top:60px;">
+            <img src="slide_1.png" id="image" height="400" width="700" style="margin-top:60px;">
             <br /><br />
-            <button onclick="First()" style="width:95px; background-color:lightgray;"> |&lArr; <br /> Pierwszy </button>
+            <button id="first" onclick="First()" style="width:95px; background-color:lightgray;"> |&lArr; <br />
+                Pierwszy </button>
             <button onclick="Prev()" style="width:95px; background-color:lightgray;"> &lArr; <br /> Poprzedni </button>
             <button onclick="Next()" style="width:95px; background-color:lightgray;"> &rArr; <br /> Następny </button>
             <button onclick="Last()" style="width:95px; background-color:lightgray;"> &rArr;| <br /> Ostatni </button>
         </div>
         </p>
     </article>
-    <aside>
+    <aside id="java10">
         <iframe src="Kontrolki_JS.html">
 
         </iframe>
     </aside>
     <footer>
-        To jest stopka naszej strony.
+        <center>
+            Szymon Mortka <br />nr.ideksu:149435 <br />Grupa: L2 <br />szymon.mortka@student.put.poznan.pl
+        </center>
+
     </footer>
 </body>
 

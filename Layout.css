@@ -1,7 +1,7 @@
 ﻿body
 {
-    width:1204px;
-    height:900px;
+    width:88vw;
+    height:137vh;
     margin:auto;
 }
 nav, article, aside
@@ -12,31 +12,31 @@ nav, article, aside
 nav
 {
     background:#66ccff;
-    width:200px;
-    height:714px;
+    width:15vw;
+    height:108vh;
 }
 body > article
 {
-    width:790px;
-    height:700px;
-    padding:5px;
-    border:2px solid gray;
+    width:57vw;
+    height:106vh;
+    padding:0.36vw;
+    border:0.14vw solid gray;
     background:radial-gradient(circle at 400px 500px, #3bf 5%, #9df 15%, #6cf 70%);
     overflow:auto;
 }
 body > header
 {
-    width:1198px;
-    height:100px;
-    background-color:dodgerblue;
+    width:88vw;
+    height:15vh;
+    background-color:rgb(42, 43, 44);
     text-align:center;
-    padding-top:10px;
+    padding-top:0.73vw;
     border:3px solid brown;
 }
 aside
 {
-    width:200px;
-    height:714px;
+    width:15vw;
+    height:109vh;
     background-color:ActiveCaption;
 }
 body > footer
@@ -44,8 +44,8 @@ body > footer
     border-width:8px 6px 4px 2px;
     border-style:dotted;
     border-color:green;
-    height:80px;
-    width:1196px;
+    height:12vh;
+    width:88vw;
     float:left;
 }
 iframe

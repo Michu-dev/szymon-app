@@ -1,0 +1,2251 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>TIiSKwE</title>
+    <!-- <link rel="stylesheet" type="text/css" href="Layout.css" /> -->
+    <link rel="stylesheet" type="text/css" href="Menu.css" />
+    <link rel="stylesheet" media="screen and (max-width: 660px)" href="smallLayout.css" />
+    <link rel="stylesheet" media="screen and (min-width: 660px)" href="Layout.css" />
+    <style>
+        canvas
+        {
+            border: 1px dashed black;
+            background-color: white;
+        }
+        input
+        {
+            color: #F00;
+            background-color: bisque;
+        }
+        input.Selected
+        {
+            color: #00F;
+            background-color: antiquewhite;
+        }
+    </style>
+    <script type="text/javascript">
+        var can;
+        var cont;
+
+        window.onload = function ()
+        {
+            can = document.getElementById("plotno");
+        }
+
+        function wyczyscRysunek()
+        {
+            cont.clearRect(0, 0, can.width, can.height);
+        }
+
+        function rysujLinie()
+        {
+            if (cont == null)
+            {
+                cont = can.getContext("2d");
+            }
+
+            cont.beginPath();
+            cont.lineWidth = 3;
+            cont.strokeStyle = "red";
+            cont.lineCap = "round" // można także: 'butt' lub 'square'
+            cont.moveTo(10, 10);
+            cont.lineTo(can.width - 10, can.height - 10);
+            cont.stroke();
+
+            cont.beginPath();
+            cont.lineWidth = 2;
+            cont.strokeStyle = "green";
+            cont.moveTo(20, 10);
+            cont.lineTo(500, 290);
+            cont.stroke();
+        }
+
+        function rysujKrzywe()
+        {
+            if (cont == null)
+            {
+                cont = can.getContext("2d");
+            }
+
+            var center_X = 200;
+            var center_Y = 200;
+            var radius = 100;
+            var startAngle = 1.25 * Math.PI;
+            var endAngle = 1.75 * Math.PI;
+            cont.beginPath();
+            cont.strokeStyle = "#5599CC";
+            cont.lineWidth = 5;
+            cont.arc(center_X, center_Y, radius, startAngle, endAngle);
+            cont.stroke();
+
+            //Bezier curve
+            var startPoint_X = 152;
+            var startPoint_Y = 242;
+            var controlPoint1_X = 187;
+            var controlPoint1_Y = 32;
+            var controlPoint2_X = 429;
+            var controlPoint2_Y = 480;
+            var endPoint_X = 365;
+            var endPoint_Y = 133;
+            cont.beginPath();
+            cont.moveTo(startPoint_X, startPoint_Y);
+            cont.bezierCurveTo(controlPoint1_X, controlPoint1_Y, controlPoint2_X, controlPoint2_Y, endPoint_X, endPoint_Y);
+            cont.stroke();
+        }
+
+        function rysujFigury()
+        {
+            if (cont == null)
+            {
+                cont = can.getContext("2d");
+            }
+
+            //trójkąt
+            var arm = 150;
+            var base = 150;
+            var h = Math.sqrt(Math.pow(arm, 2) - Math.pow(0.5 * base, 2));
+            cont.beginPath();
+            cont.moveTo(can.width / 2 - 0.5 * base, 3 * can.height / 4);
+            cont.lineTo(can.width / 2, can.height / 2 - h);
+            cont.lineTo(can.width / 2 + 0.5 * base, 3 * can.height / 4);
+            cont.closePath();
+            cont.lineWidth = 10;
+            cont.lineJoin = "round";
+            cont.strokeStyle = "#996633";
+            cont.fillStyle = "yellow";
+            cont.fill();
+            cont.stroke();
+
+            //prostokąt
+            cont.beginPath();
+            cont.lineWidth = 3;
+            cont.strokeStyle = "rgb(200, 0, 0)";
+            cont.strokeRect(50, 150, 250, 50);
+            cont.fillStyle = "rgba(200, 0, 0, 0.3)";
+            cont.fillRect(50, 150, 250, 50);
+
+            //okrąg
+            cont.beginPath();
+            cont.globalAlpha = 0.5;
+            cont.arc(350, 150, 75, 0, 2 * Math.PI, true);
+            cont.strokeStyle = "blue";
+            cont.stroke();
+            cont.fillStyle = "green";
+            cont.fill();
+            cont.globalAlpha = 1;
+        }
+
+        function rysujTekst()
+        {
+            if (cont == null)
+            {
+                cont = can.getContext("2d");
+            }
+
+            cont.font = "20px Arial";
+            cont.textAlign = "left";
+            cont.fillStyle = "black";
+            cont.fillText("Tekst wyrównany do lewej", can.width / 2, 50);
+
+            cont.textAlign = "center";
+            cont.lineWidth = 1;
+            cont.strokeStyle = "blue";
+            cont.strokeText("Kontur tekstu wyrównany do środka", can.width / 2, 250);
+        }
+
+        function PacMan()
+        {
+            if (cont == null)
+            {
+                cont = can.getContext("2d");
+            }
+
+            var radius = 100;
+            cont.beginPath();
+            cont.arc(can.width / 2, can.height / 2, radius, 0, -Math.PI / 6);
+            cont.lineTo(can.width / 2, can.height / 2);
+            cont.lineTo(can.width / 2 + radius, can.height / 2);
+            cont.fillStyle = "yellow";
+            cont.fill();
+            cont.lineWidth = 3;
+            cont.strokeStyle = "black";
+            cont.stroke();
+            cont.closePath();
+
+            //przesunięcie początku układu XY
+            cont.translate(can.width / 2, can.height / 2);
+            //rozpoczęcie rysowania
+            cont.beginPath();
+            //obrót osi względem początku układu XY
+            cont.rotate(-Math.PI / 6);
+            //skalowanie osi potrzebne aby uzykać owal oczu z wykorzystniem zwykłego okręgu
+            cont.scale(0.75, 1);
+            //rysowanie owalnych oczu
+            cont.arc(0.7 * radius, -0.3 * radius, 0.1 * radius, 0, 2 * Math.PI, true);
+            cont.fillStyle = "black";
+            cont.fill();
+            cont.closePath();
+            //powrót do noramalnej skali
+            cont.scale(1 / 0.75, 1);
+            //powrót do normalnego obrotu
+            cont.rotate(Math.PI / 6);
+            //resetowanie do startowego początku układu XY
+            cont.translate(-can.width / 2, -can.height / 2);
+
+            cont.beginPath();
+            cont.font = "30px Arial";
+            cont.textAlign = "center";
+            cont.fillText("PACMAN !!!", can.width / 2, can.height / 2 + radius + 40);
+        }
+    </script>
+</head>
+<body>
+    <header style="background-color:aqua">
+        <h1>Poznańska benzyna</h1>
+    </header>
+    <nav>
+        <h2>Menu:</h2>
+        <ul>
+            <li><a href="Index.html" target="_self">Strona główna</a></li>
+            <li><a href="Tabelka.html" target="_self">Najtańsze stacje</a></li>
+            <li><a href="Info.html" target="_self">Informacje</a></li>
+            <li><a href="Form.html" target="_self">Formularz</a></li>
+            <li><a href="MAP_tag.html" target="_self">Znacznik MAP</a></li>
+            <li><a href="JavaScript1.html" target="_self">JavaScript1</a></li>
+            <li><a href="Przelicznik.html" target="_self">Przelicznik</a></li>
+            <li><a href="JavaScript3.html" target="_self">JavaScript3</a></li>
+            <li><a href="Logo.html" target="_self">Logo firmy</a></li>
+            <li><a href="Konkurs.html" target="_self">Konkurs na nowe logo</a></li>
+            
+        </ul>
+    </nav>
+    <article>
+        <h2>Przykłady rysowania różnych elementów w znaczniku CANVAS</h2>
+        <form>
+            <!--<input type="button" name="RysujBtn" value="Rysuj Linie" onclick="rysujLinie();" />
+            <input type="button" name="RysujBtn" value="Rysuj Krzywe" onclick="rysujKrzywe();" />
+            <input type="button" name="RysujBtn" value="Rysuj Figury" onclick="rysujFigury();" />
+            <input type="button" name="RysujBtn" value="Rysuj Tekst" onclick="rysujTekst();" />
+            <input type="button" name="RysujBtn" value="PACMAN !!!" onclick="PacMan();" />
+            <input type="button" name="RysujBtn" value="Wyczyść Obszar Rysowania"
+                   onclick="wyczyscRysunek();" class="Selected" />-->
+            <br /><br />
+            <!--<canvas id="plotno" width="500" height="300"></canvas>-->
+            <canvas id="plotno" width="550" height="300"></canvas>
+
+            <script type="text/javascript">
+                var canvas, context, canvaso, contexto;
+                canvaso = document.getElementById('plotno');
+                context = canvaso.getContext('2d');
+                context.lineWidth = 5;
+
+                context.lineWidth = 6;
+
+                context.lineWidth = 8;
+
+                context.lineWidth = 9;
+
+                context.lineWidth = 10;
+
+                context.lineWidth = 11;
+
+                context.lineWidth = 12;
+
+                context.lineWidth = 13;
+
+                context.lineWidth = 14;
+
+                context.strokeStyle = '#D7FF12';
+                context.save();
+                context.translate(272.5, 198.5);
+                context.scale(1, 0.9534883720930233);
+                context.beginPath();
+                context.arc(0, 0, 59, 0, 6.283185307179586, false);
+                context.stroke();
+                context.closePath();
+                context.restore();
+
+                context.strokeStyle = '#D7FF12';
+                context.beginPath();
+                context.moveTo(275, 37);
+
+                context.lineTo(275, 37);
+                context.stroke();
+
+                context.strokeStyle = '#D7FF12';
+                context.beginPath();
+                context.moveTo(276, 29);
+                context.lineTo(215, 189);
+                context.stroke();
+                context.closePath();
+
+                context.strokeStyle = '#D7FF12';
+                context.beginPath();
+                context.moveTo(275, 32);
+                context.lineTo(329, 184);
+                context.stroke();
+                context.closePath();
+
+                context.strokeStyle = '#D7FF12';
+                context.beginPath();
+                context.moveTo(266, 126);
+
+                context.lineTo(266, 126);
+                context.stroke();
+
+                context.strokeStyle = '#D7FF12';
+                context.beginPath();
+                context.moveTo(267, 123);
+
+                context.lineTo(268, 120);
+                context.stroke();
+
+                context.lineTo(268, 115);
+                context.stroke();
+
+                context.lineTo(267, 105);
+                context.stroke();
+
+                context.lineTo(264, 100);
+                context.stroke();
+
+                context.lineTo(264, 98);
+                context.stroke();
+
+                context.lineTo(264, 99);
+                context.stroke();
+
+                context.lineTo(265, 106);
+                context.stroke();
+
+                context.lineTo(266, 111);
+                context.stroke();
+
+                context.lineTo(266, 114);
+                context.stroke();
+
+                context.lineTo(266, 116);
+                context.stroke();
+
+                context.lineTo(266, 118);
+                context.stroke();
+
+                context.lineTo(266, 119);
+                context.stroke();
+
+                context.lineTo(266, 122);
+                context.stroke();
+
+                context.lineTo(266, 126);
+                context.stroke();
+
+                context.lineTo(266, 128);
+                context.stroke();
+
+                context.lineTo(266, 132);
+                context.stroke();
+
+                context.lineTo(266, 134);
+                context.stroke();
+
+                context.lineTo(265, 136);
+                context.stroke();
+
+                context.lineTo(263, 136);
+                context.stroke();
+
+                context.lineTo(262, 136);
+                context.stroke();
+
+                context.lineTo(261, 136);
+                context.stroke();
+
+                context.lineTo(260, 134);
+                context.stroke();
+
+                context.lineTo(259, 132);
+                context.stroke();
+
+                context.lineTo(259, 130);
+                context.stroke();
+
+                context.lineTo(259, 128);
+                context.stroke();
+
+                context.lineTo(259, 127);
+                context.stroke();
+
+                context.lineTo(259, 125);
+                context.stroke();
+
+                context.lineTo(259, 123);
+                context.stroke();
+
+                context.lineTo(259, 122);
+                context.stroke();
+
+                context.lineTo(259, 121);
+                context.stroke();
+
+                context.lineTo(259, 119);
+                context.stroke();
+
+                context.lineTo(260, 116);
+                context.stroke();
+
+                context.lineTo(260, 115);
+                context.stroke();
+
+                context.lineTo(260, 114);
+                context.stroke();
+
+                context.lineTo(260, 113);
+                context.stroke();
+
+                context.lineTo(260, 111);
+                context.stroke();
+
+                context.lineTo(260, 110);
+                context.stroke();
+
+                context.lineTo(260, 109);
+                context.stroke();
+
+                context.lineTo(260, 108);
+                context.stroke();
+
+                context.lineTo(260, 106);
+                context.stroke();
+
+                context.lineTo(260, 105);
+                context.stroke();
+
+                context.lineTo(261, 104);
+                context.stroke();
+
+                context.lineTo(261, 103);
+                context.stroke();
+
+                context.lineTo(260, 102);
+                context.stroke();
+
+                context.lineTo(259, 102);
+                context.stroke();
+
+                context.lineTo(259, 105);
+                context.stroke();
+
+                context.lineTo(259, 110);
+                context.stroke();
+
+                context.lineTo(259, 114);
+                context.stroke();
+
+                context.lineTo(260, 118);
+                context.stroke();
+
+                context.lineTo(260, 119);
+                context.stroke();
+
+                context.lineTo(259, 122);
+                context.stroke();
+
+                context.lineTo(259, 123);
+                context.stroke();
+
+                context.lineTo(258, 124);
+                context.stroke();
+
+                context.lineTo(257, 125);
+                context.stroke();
+
+                context.lineTo(256, 126);
+                context.stroke();
+
+                context.lineTo(255, 127);
+                context.stroke();
+
+                context.lineTo(254, 128);
+                context.stroke();
+
+                context.lineTo(252, 128);
+                context.stroke();
+
+                context.lineTo(250, 130);
+                context.stroke();
+
+                context.lineTo(250, 132);
+                context.stroke();
+
+                context.lineTo(248, 133);
+                context.stroke();
+
+                context.lineTo(248, 135);
+                context.stroke();
+
+                context.lineTo(247, 135);
+                context.stroke();
+
+                context.lineTo(247, 136);
+                context.stroke();
+
+                context.lineTo(246, 137);
+                context.stroke();
+
+                context.lineTo(245, 138);
+                context.stroke();
+
+                context.lineTo(245, 139);
+                context.stroke();
+
+                context.lineTo(243, 141);
+                context.stroke();
+
+                context.lineTo(243, 142);
+                context.stroke();
+
+                context.lineTo(243, 143);
+                context.stroke();
+
+                context.lineTo(243, 142);
+                context.stroke();
+
+                context.lineTo(243, 135);
+                context.stroke();
+
+                context.lineTo(244, 130);
+                context.stroke();
+
+                context.lineTo(246, 123);
+                context.stroke();
+
+                context.lineTo(247, 117);
+                context.stroke();
+
+                context.lineTo(249, 116);
+                context.stroke();
+
+                context.lineTo(251, 114);
+                context.stroke();
+
+                context.lineTo(253, 112);
+                context.stroke();
+
+                context.lineTo(254, 112);
+                context.stroke();
+
+                context.lineTo(255, 112);
+                context.stroke();
+
+                context.lineTo(256, 112);
+                context.stroke();
+
+                context.lineTo(257, 111);
+                context.stroke();
+
+                context.lineTo(258, 110);
+                context.stroke();
+
+                context.lineTo(259, 108);
+                context.stroke();
+
+                context.lineTo(260, 106);
+                context.stroke();
+
+                context.lineTo(260, 103);
+                context.stroke();
+
+                context.lineTo(260, 101);
+                context.stroke();
+
+                context.lineTo(260, 100);
+                context.stroke();
+
+                context.lineTo(260, 99);
+                context.stroke();
+
+                context.lineTo(261, 96);
+                context.stroke();
+
+                context.lineTo(261, 93);
+                context.stroke();
+
+                context.lineTo(262, 90);
+                context.stroke();
+
+                context.lineTo(263, 88);
+                context.stroke();
+
+                context.lineTo(264, 88);
+                context.stroke();
+
+                context.lineTo(265, 86);
+                context.stroke();
+
+                context.lineTo(266, 85);
+                context.stroke();
+
+                context.lineTo(266, 82);
+                context.stroke();
+
+                context.lineTo(268, 80);
+                context.stroke();
+
+                context.lineTo(268, 79);
+                context.stroke();
+
+                context.lineTo(269, 78);
+                context.stroke();
+
+                context.lineTo(269, 76);
+                context.stroke();
+
+                context.lineTo(269, 74);
+                context.stroke();
+
+                context.lineTo(269, 73);
+                context.stroke();
+
+                context.lineTo(269, 72);
+                context.stroke();
+
+                context.lineTo(270, 71);
+                context.stroke();
+
+                context.lineTo(271, 69);
+                context.stroke();
+
+                context.lineTo(272, 67);
+                context.stroke();
+
+                context.lineTo(272, 65);
+                context.stroke();
+
+                context.lineTo(273, 63);
+                context.stroke();
+
+                context.lineTo(273, 61);
+                context.stroke();
+
+                context.lineTo(273, 60);
+                context.stroke();
+
+                context.lineTo(273, 59);
+                context.stroke();
+
+                context.lineTo(273, 58);
+                context.stroke();
+
+                context.lineTo(273, 57);
+                context.stroke();
+
+                context.lineTo(274, 56);
+                context.stroke();
+
+                context.lineTo(274, 55);
+                context.stroke();
+
+                context.lineTo(274, 56);
+                context.stroke();
+
+                context.lineTo(276, 61);
+                context.stroke();
+
+                context.lineTo(275, 60);
+                context.stroke();
+
+                context.lineTo(274, 57);
+                context.stroke();
+
+                context.lineTo(274, 54);
+                context.stroke();
+
+                context.lineTo(274, 53);
+                context.stroke();
+
+                context.lineTo(274, 52);
+                context.stroke();
+
+                context.lineTo(274, 51);
+                context.stroke();
+
+                context.lineTo(274, 52);
+                context.stroke();
+
+                context.lineTo(274, 58);
+                context.stroke();
+
+                context.lineTo(277, 69);
+                context.stroke();
+
+                context.lineTo(277, 76);
+                context.stroke();
+
+                context.lineTo(277, 80);
+                context.stroke();
+
+                context.lineTo(276, 85);
+                context.stroke();
+
+                context.lineTo(275, 89);
+                context.stroke();
+
+                context.lineTo(274, 92);
+                context.stroke();
+
+                context.lineTo(273, 94);
+                context.stroke();
+
+                context.lineTo(271, 96);
+                context.stroke();
+
+                context.lineTo(271, 97);
+                context.stroke();
+
+                context.lineTo(271, 100);
+                context.stroke();
+
+                context.lineTo(271, 104);
+                context.stroke();
+
+                context.lineTo(271, 107);
+                context.stroke();
+
+                context.lineTo(271, 111);
+                context.stroke();
+
+                context.lineTo(271, 116);
+                context.stroke();
+
+                context.lineTo(271, 121);
+                context.stroke();
+
+                context.lineTo(272, 122);
+                context.stroke();
+
+                context.lineTo(273, 127);
+                context.stroke();
+
+                context.lineTo(274, 135);
+                context.stroke();
+
+                context.lineTo(275, 136);
+                context.stroke();
+
+                context.lineTo(276, 139);
+                context.stroke();
+
+                context.lineTo(276, 142);
+                context.stroke();
+
+                context.lineTo(277, 142);
+                context.stroke();
+
+                context.lineTo(277, 143);
+                context.stroke();
+
+                context.lineTo(277, 142);
+                context.stroke();
+
+                context.lineTo(277, 135);
+                context.stroke();
+
+                context.lineTo(277, 124);
+                context.stroke();
+
+                context.lineTo(277, 112);
+                context.stroke();
+
+                context.lineTo(277, 105);
+                context.stroke();
+
+                context.lineTo(277, 101);
+                context.stroke();
+
+                context.lineTo(277, 94);
+                context.stroke();
+
+                context.lineTo(277, 92);
+                context.stroke();
+
+                context.lineTo(277, 90);
+                context.stroke();
+
+                context.lineTo(277, 88);
+                context.stroke();
+
+                context.lineTo(277, 87);
+                context.stroke();
+
+                context.lineTo(277, 86);
+                context.stroke();
+
+                context.lineTo(278, 86);
+                context.stroke();
+
+                context.lineTo(282, 94);
+                context.stroke();
+
+                context.lineTo(285, 109);
+                context.stroke();
+
+                context.lineTo(285, 118);
+                context.stroke();
+
+                context.lineTo(288, 123);
+                context.stroke();
+
+                context.lineTo(289, 129);
+                context.stroke();
+
+                context.lineTo(292, 134);
+                context.stroke();
+
+                context.lineTo(293, 134);
+                context.stroke();
+
+                context.lineTo(295, 136);
+                context.stroke();
+
+                context.lineTo(297, 140);
+                context.stroke();
+
+                context.lineTo(298, 142);
+                context.stroke();
+
+                context.lineTo(300, 146);
+                context.stroke();
+
+                context.lineTo(301, 146);
+                context.stroke();
+
+                context.lineTo(302, 146);
+                context.stroke();
+
+                context.lineTo(303, 146);
+                context.stroke();
+
+                context.lineTo(302, 144);
+                context.stroke();
+
+                context.lineTo(299, 139);
+                context.stroke();
+
+                context.lineTo(299, 138);
+                context.stroke();
+
+                context.lineTo(297, 134);
+                context.stroke();
+
+                context.lineTo(295, 132);
+                context.stroke();
+
+                context.lineTo(293, 129);
+                context.stroke();
+
+                context.lineTo(293, 126);
+                context.stroke();
+
+                context.lineTo(293, 123);
+                context.stroke();
+
+                context.lineTo(293, 122);
+                context.stroke();
+
+                context.lineTo(293, 118);
+                context.stroke();
+
+                context.lineTo(292, 114);
+                context.stroke();
+
+                context.lineTo(292, 111);
+                context.stroke();
+
+                context.lineTo(291, 108);
+                context.stroke();
+
+                context.lineTo(290, 104);
+                context.stroke();
+
+                context.lineTo(290, 103);
+                context.stroke();
+
+                context.lineTo(289, 102);
+                context.stroke();
+
+                context.lineTo(288, 99);
+                context.stroke();
+
+                context.lineTo(287, 97);
+                context.stroke();
+
+                context.lineTo(287, 96);
+                context.stroke();
+
+                context.lineTo(286, 95);
+                context.stroke();
+
+                context.lineTo(285, 93);
+                context.stroke();
+
+                context.lineTo(285, 92);
+                context.stroke();
+
+                context.lineTo(283, 89);
+                context.stroke();
+
+                context.lineTo(283, 88);
+                context.stroke();
+
+                context.lineTo(283, 86);
+                context.stroke();
+
+                context.lineTo(282, 84);
+                context.stroke();
+
+                context.lineTo(282, 85);
+                context.stroke();
+
+                context.lineTo(289, 95);
+                context.stroke();
+
+                context.lineTo(293, 101);
+                context.stroke();
+
+                context.lineTo(296, 110);
+                context.stroke();
+
+                context.lineTo(298, 112);
+                context.stroke();
+
+                context.lineTo(298, 114);
+                context.stroke();
+
+                context.lineTo(298, 116);
+                context.stroke();
+
+                context.lineTo(298, 117);
+                context.stroke();
+
+                context.lineTo(298, 118);
+                context.stroke();
+
+                context.lineTo(300, 119);
+                context.stroke();
+
+                context.lineTo(300, 120);
+                context.stroke();
+
+                context.lineTo(300, 121);
+                context.stroke();
+
+                context.lineTo(300, 123);
+                context.stroke();
+
+                context.lineTo(300, 124);
+                context.stroke();
+
+                context.lineTo(300, 125);
+                context.stroke();
+
+                context.lineTo(300, 127);
+                context.stroke();
+
+                context.lineTo(300, 128);
+                context.stroke();
+
+                context.lineTo(300, 130);
+                context.stroke();
+
+                context.lineTo(301, 135);
+                context.stroke();
+
+                context.lineTo(301, 139);
+                context.stroke();
+
+                context.lineTo(302, 143);
+                context.stroke();
+
+                context.lineTo(302, 145);
+                context.stroke();
+
+                context.lineTo(302, 147);
+                context.stroke();
+
+                context.lineTo(303, 150);
+                context.stroke();
+
+                context.lineTo(304, 151);
+                context.stroke();
+
+                context.lineTo(304, 152);
+                context.stroke();
+
+                context.lineTo(304, 154);
+                context.stroke();
+
+                context.lineTo(305, 156);
+                context.stroke();
+
+                context.lineTo(307, 158);
+                context.stroke();
+
+                context.lineTo(307, 161);
+                context.stroke();
+
+                context.lineTo(307, 163);
+                context.stroke();
+
+                context.lineTo(308, 168);
+                context.stroke();
+
+                context.lineTo(309, 169);
+                context.stroke();
+
+                context.lineTo(309, 174);
+                context.stroke();
+
+                context.lineTo(310, 177);
+                context.stroke();
+
+                context.lineTo(311, 179);
+                context.stroke();
+
+                context.lineTo(313, 184);
+                context.stroke();
+
+                context.lineTo(314, 190);
+                context.stroke();
+
+                context.lineTo(315, 194);
+                context.stroke();
+
+                context.lineTo(316, 199);
+                context.stroke();
+
+                context.lineTo(317, 201);
+                context.stroke();
+
+                context.lineTo(318, 202);
+                context.stroke();
+
+                context.lineTo(319, 206);
+                context.stroke();
+
+                context.lineTo(319, 207);
+                context.stroke();
+
+                context.lineTo(319, 205);
+                context.stroke();
+
+                context.lineTo(319, 198);
+                context.stroke();
+
+                context.lineTo(317, 187);
+                context.stroke();
+
+                context.lineTo(315, 179);
+                context.stroke();
+
+                context.lineTo(315, 177);
+                context.stroke();
+
+                context.lineTo(315, 174);
+                context.stroke();
+
+                context.lineTo(315, 173);
+                context.stroke();
+
+                context.lineTo(315, 172);
+                context.stroke();
+
+                context.lineTo(315, 173);
+                context.stroke();
+
+                context.lineTo(316, 184);
+                context.stroke();
+
+                context.lineTo(317, 188);
+                context.stroke();
+
+                context.lineTo(318, 192);
+                context.stroke();
+
+                context.lineTo(315, 195);
+                context.stroke();
+
+                context.lineTo(303, 187);
+                context.stroke();
+
+                context.lineTo(295, 172);
+                context.stroke();
+
+                context.lineTo(287, 160);
+                context.stroke();
+
+                context.lineTo(276, 153);
+                context.stroke();
+
+                context.lineTo(269, 152);
+                context.stroke();
+
+                context.lineTo(266, 151);
+                context.stroke();
+
+                context.lineTo(264, 151);
+                context.stroke();
+
+                context.lineTo(262, 149);
+                context.stroke();
+
+                context.lineTo(257, 147);
+                context.stroke();
+
+                context.lineTo(257, 148);
+                context.stroke();
+
+                context.lineTo(271, 156);
+                context.stroke();
+
+                context.lineTo(279, 162);
+                context.stroke();
+
+                context.lineTo(281, 162);
+                context.stroke();
+
+                context.lineTo(286, 159);
+                context.stroke();
+
+                context.lineTo(289, 156);
+                context.stroke();
+
+                context.lineTo(289, 155);
+                context.stroke();
+
+                context.lineTo(290, 155);
+                context.stroke();
+
+                context.lineTo(291, 155);
+                context.stroke();
+
+                context.lineTo(292, 155);
+                context.stroke();
+
+                context.lineTo(294, 155);
+                context.stroke();
+
+                context.lineTo(295, 155);
+                context.stroke();
+
+                context.lineTo(296, 155);
+                context.stroke();
+
+                context.lineTo(297, 155);
+                context.stroke();
+
+                context.lineTo(293, 155);
+                context.stroke();
+
+                context.lineTo(287, 155);
+                context.stroke();
+
+                context.lineTo(282, 153);
+                context.stroke();
+
+                context.lineTo(278, 153);
+                context.stroke();
+
+                context.lineTo(273, 153);
+                context.stroke();
+
+                context.lineTo(263, 155);
+                context.stroke();
+
+                context.lineTo(253, 157);
+                context.stroke();
+
+                context.lineTo(249, 157);
+                context.stroke();
+
+                context.lineTo(249, 158);
+                context.stroke();
+
+                context.lineTo(246, 159);
+                context.stroke();
+
+                context.lineTo(240, 162);
+                context.stroke();
+
+                context.lineTo(236, 164);
+                context.stroke();
+
+                context.lineTo(234, 165);
+                context.stroke();
+
+                context.lineTo(231, 168);
+                context.stroke();
+
+                context.lineTo(228, 171);
+                context.stroke();
+
+                context.lineTo(227, 173);
+                context.stroke();
+
+                context.lineTo(224, 176);
+                context.stroke();
+
+                context.lineTo(222, 181);
+                context.stroke();
+
+                context.lineTo(221, 184);
+                context.stroke();
+
+                context.lineTo(221, 186);
+                context.stroke();
+
+                context.lineTo(221, 187);
+                context.stroke();
+
+                context.lineTo(221, 189);
+                context.stroke();
+
+                context.lineTo(221, 193);
+                context.stroke();
+
+                context.lineTo(221, 196);
+                context.stroke();
+
+                context.lineTo(221, 197);
+                context.stroke();
+
+                context.lineTo(221, 199);
+                context.stroke();
+
+                context.lineTo(221, 201);
+                context.stroke();
+
+                context.lineTo(221, 203);
+                context.stroke();
+
+                context.lineTo(221, 205);
+                context.stroke();
+
+                context.lineTo(221, 208);
+                context.stroke();
+
+                context.lineTo(222, 210);
+                context.stroke();
+
+                context.lineTo(224, 213);
+                context.stroke();
+
+                context.lineTo(225, 215);
+                context.stroke();
+
+                context.lineTo(226, 216);
+                context.stroke();
+
+                context.lineTo(226, 217);
+                context.stroke();
+
+                context.lineTo(229, 224);
+                context.stroke();
+
+                context.lineTo(231, 228);
+                context.stroke();
+
+                context.lineTo(232, 229);
+                context.stroke();
+
+                context.lineTo(233, 230);
+                context.stroke();
+
+                context.lineTo(235, 232);
+                context.stroke();
+
+                context.lineTo(238, 234);
+                context.stroke();
+
+                context.lineTo(239, 235);
+                context.stroke();
+
+                context.lineTo(240, 236);
+                context.stroke();
+
+                context.lineTo(241, 236);
+                context.stroke();
+
+                context.lineTo(244, 236);
+                context.stroke();
+
+                context.lineTo(248, 239);
+                context.stroke();
+
+                context.lineTo(249, 240);
+                context.stroke();
+
+                context.lineTo(250, 241);
+                context.stroke();
+
+                context.lineTo(252, 242);
+                context.stroke();
+
+                context.lineTo(253, 243);
+                context.stroke();
+
+                context.lineTo(254, 243);
+                context.stroke();
+
+                context.lineTo(255, 243);
+                context.stroke();
+
+                context.lineTo(256, 243);
+                context.stroke();
+
+                context.lineTo(257, 243);
+                context.stroke();
+
+                context.lineTo(261, 243);
+                context.stroke();
+
+                context.lineTo(264, 243);
+                context.stroke();
+
+                context.lineTo(266, 242);
+                context.stroke();
+
+                context.lineTo(267, 242);
+                context.stroke();
+
+                context.lineTo(268, 242);
+                context.stroke();
+
+                context.lineTo(269, 242);
+                context.stroke();
+
+                context.lineTo(271, 242);
+                context.stroke();
+
+                context.lineTo(275, 241);
+                context.stroke();
+
+                context.lineTo(277, 241);
+                context.stroke();
+
+                context.lineTo(279, 241);
+                context.stroke();
+
+                context.lineTo(280, 241);
+                context.stroke();
+
+                context.lineTo(281, 240);
+                context.stroke();
+
+                context.lineTo(282, 240);
+                context.stroke();
+
+                context.lineTo(283, 240);
+                context.stroke();
+
+                context.lineTo(284, 240);
+                context.stroke();
+
+                context.lineTo(284, 239);
+                context.stroke();
+
+                context.lineTo(285, 239);
+                context.stroke();
+
+                context.lineTo(286, 239);
+                context.stroke();
+
+                context.lineTo(287, 239);
+                context.stroke();
+
+                context.lineTo(289, 239);
+                context.stroke();
+
+                context.lineTo(291, 238);
+                context.stroke();
+
+                context.lineTo(293, 237);
+                context.stroke();
+
+                context.lineTo(294, 237);
+                context.stroke();
+
+                context.lineTo(295, 236);
+                context.stroke();
+
+                context.lineTo(297, 235);
+                context.stroke();
+
+                context.lineTo(299, 235);
+                context.stroke();
+
+                context.lineTo(300, 233);
+                context.stroke();
+
+                context.lineTo(302, 232);
+                context.stroke();
+
+                context.lineTo(304, 230);
+                context.stroke();
+
+                context.lineTo(306, 228);
+                context.stroke();
+
+                context.lineTo(307, 227);
+                context.stroke();
+
+                context.lineTo(308, 226);
+                context.stroke();
+
+                context.lineTo(309, 225);
+                context.stroke();
+
+                context.lineTo(309, 224);
+                context.stroke();
+
+                context.lineTo(310, 224);
+                context.stroke();
+
+                context.lineTo(310, 223);
+                context.stroke();
+
+                context.lineTo(311, 222);
+                context.stroke();
+
+                context.lineTo(312, 221);
+                context.stroke();
+
+                context.lineTo(313, 220);
+                context.stroke();
+
+                context.lineTo(313, 218);
+                context.stroke();
+
+                context.lineTo(314, 218);
+                context.stroke();
+
+                context.lineTo(314, 216);
+                context.stroke();
+
+                context.lineTo(315, 215);
+                context.stroke();
+
+                context.lineTo(316, 214);
+                context.stroke();
+
+                context.lineTo(316, 213);
+                context.stroke();
+
+                context.lineTo(317, 212);
+                context.stroke();
+
+                context.lineTo(317, 210);
+                context.stroke();
+
+                context.lineTo(318, 209);
+                context.stroke();
+
+                context.lineTo(319, 207);
+                context.stroke();
+
+                context.lineTo(320, 203);
+                context.stroke();
+
+                context.lineTo(321, 201);
+                context.stroke();
+
+                context.lineTo(321, 200);
+                context.stroke();
+
+                context.lineTo(321, 197);
+                context.stroke();
+
+                context.lineTo(321, 196);
+                context.stroke();
+
+                context.lineTo(320, 193);
+                context.stroke();
+
+                context.lineTo(318, 189);
+                context.stroke();
+
+                context.lineTo(317, 187);
+                context.stroke();
+
+                context.lineTo(315, 182);
+                context.stroke();
+
+                context.lineTo(311, 176);
+                context.stroke();
+
+                context.lineTo(306, 166);
+                context.stroke();
+
+                context.lineTo(305, 163);
+                context.stroke();
+
+                context.lineTo(304, 163);
+                context.stroke();
+
+                context.lineTo(302, 161);
+                context.stroke();
+
+                context.lineTo(301, 160);
+                context.stroke();
+
+                context.lineTo(299, 160);
+                context.stroke();
+
+                context.lineTo(297, 159);
+                context.stroke();
+
+                context.lineTo(296, 158);
+                context.stroke();
+
+                context.lineTo(295, 158);
+                context.stroke();
+
+                context.lineTo(291, 157);
+                context.stroke();
+
+                context.lineTo(289, 156);
+                context.stroke();
+
+                context.lineTo(284, 156);
+                context.stroke();
+
+                context.lineTo(280, 156);
+                context.stroke();
+
+                context.lineTo(278, 157);
+                context.stroke();
+
+                context.lineTo(275, 158);
+                context.stroke();
+
+                context.lineTo(271, 158);
+                context.stroke();
+
+                context.lineTo(265, 160);
+                context.stroke();
+
+                context.lineTo(258, 162);
+                context.stroke();
+
+                context.lineTo(250, 166);
+                context.stroke();
+
+                context.lineTo(244, 171);
+                context.stroke();
+
+                context.lineTo(241, 173);
+                context.stroke();
+
+                context.lineTo(241, 174);
+                context.stroke();
+
+                context.lineTo(239, 179);
+                context.stroke();
+
+                context.lineTo(237, 182);
+                context.stroke();
+
+                context.lineTo(235, 186);
+                context.stroke();
+
+                context.lineTo(235, 190);
+                context.stroke();
+
+                context.lineTo(235, 193);
+                context.stroke();
+
+                context.lineTo(236, 196);
+                context.stroke();
+
+                context.lineTo(236, 198);
+                context.stroke();
+
+                context.lineTo(237, 202);
+                context.stroke();
+
+                context.lineTo(240, 208);
+                context.stroke();
+
+                context.lineTo(240, 210);
+                context.stroke();
+
+                context.lineTo(241, 212);
+                context.stroke();
+
+                context.lineTo(243, 216);
+                context.stroke();
+
+                context.lineTo(244, 218);
+                context.stroke();
+
+                context.lineTo(245, 219);
+                context.stroke();
+
+                context.lineTo(245, 221);
+                context.stroke();
+
+                context.lineTo(248, 224);
+                context.stroke();
+
+                context.lineTo(251, 228);
+                context.stroke();
+
+                context.lineTo(252, 229);
+                context.stroke();
+
+                context.lineTo(254, 231);
+                context.stroke();
+
+                context.lineTo(254, 230);
+                context.stroke();
+
+                context.lineTo(243, 218);
+                context.stroke();
+
+                context.lineTo(239, 214);
+                context.stroke();
+
+                context.lineTo(237, 212);
+                context.stroke();
+
+                context.lineTo(234, 210);
+                context.stroke();
+
+                context.lineTo(234, 208);
+                context.stroke();
+
+                context.lineTo(232, 206);
+                context.stroke();
+
+                context.lineTo(232, 205);
+                context.stroke();
+
+                context.lineTo(230, 202);
+                context.stroke();
+
+                context.lineTo(229, 199);
+                context.stroke();
+
+                context.lineTo(227, 195);
+                context.stroke();
+
+                context.lineTo(227, 193);
+                context.stroke();
+
+                context.lineTo(227, 192);
+                context.stroke();
+
+                context.lineTo(228, 191);
+                context.stroke();
+
+                context.lineTo(240, 189);
+                context.stroke();
+
+                context.lineTo(249, 189);
+                context.stroke();
+
+                context.lineTo(255, 189);
+                context.stroke();
+
+                context.lineTo(261, 186);
+                context.stroke();
+
+                context.lineTo(267, 183);
+                context.stroke();
+
+                context.lineTo(272, 176);
+                context.stroke();
+
+                context.lineTo(274, 171);
+                context.stroke();
+
+                context.lineTo(274, 170);
+                context.stroke();
+
+                context.lineTo(274, 169);
+                context.stroke();
+
+                context.lineTo(268, 161);
+                context.stroke();
+
+                context.lineTo(264, 162);
+                context.stroke();
+
+                context.lineTo(255, 172);
+                context.stroke();
+
+                context.lineTo(250, 181);
+                context.stroke();
+
+                context.lineTo(248, 193);
+                context.stroke();
+
+                context.lineTo(248, 199);
+                context.stroke();
+
+                context.lineTo(248, 201);
+                context.stroke();
+
+                context.lineTo(250, 196);
+                context.stroke();
+
+                context.lineTo(256, 184);
+                context.stroke();
+
+                context.lineTo(261, 174);
+                context.stroke();
+
+                context.lineTo(266, 166);
+                context.stroke();
+
+                context.lineTo(267, 165);
+                context.stroke();
+
+                context.lineTo(268, 165);
+                context.stroke();
+
+                context.lineTo(260, 194);
+                context.stroke();
+
+                context.lineTo(254, 207);
+                context.stroke();
+
+                context.lineTo(254, 214);
+                context.stroke();
+
+                context.lineTo(254, 213);
+                context.stroke();
+
+                context.lineTo(262, 191);
+                context.stroke();
+
+                context.lineTo(263, 187);
+                context.stroke();
+
+                context.lineTo(263, 188);
+                context.stroke();
+
+                context.lineTo(259, 200);
+                context.stroke();
+
+                context.lineTo(257, 212);
+                context.stroke();
+
+                context.lineTo(257, 219);
+                context.stroke();
+
+                context.lineTo(258, 219);
+                context.stroke();
+
+                context.lineTo(267, 206);
+                context.stroke();
+
+                context.lineTo(268, 222);
+                context.stroke();
+
+                context.lineTo(268, 225);
+                context.stroke();
+
+                context.lineTo(269, 225);
+                context.stroke();
+
+                context.lineTo(277, 218);
+                context.stroke();
+
+                context.lineTo(281, 217);
+                context.stroke();
+
+                context.lineTo(282, 218);
+                context.stroke();
+
+                context.lineTo(282, 228);
+                context.stroke();
+
+                context.lineTo(282, 229);
+                context.stroke();
+
+                context.lineTo(286, 229);
+                context.stroke();
+
+                context.lineTo(296, 221);
+                context.stroke();
+
+                context.lineTo(304, 212);
+                context.stroke();
+
+                context.lineTo(306, 212);
+                context.stroke();
+
+                context.lineTo(310, 209);
+                context.stroke();
+
+                context.lineTo(313, 203);
+                context.stroke();
+
+                context.lineTo(313, 198);
+                context.stroke();
+
+                context.lineTo(306, 193);
+                context.stroke();
+
+                context.lineTo(298, 185);
+                context.stroke();
+
+                context.lineTo(290, 181);
+                context.stroke();
+
+                context.lineTo(286, 176);
+                context.stroke();
+
+                context.lineTo(284, 175);
+                context.stroke();
+
+                context.lineTo(280, 184);
+                context.stroke();
+
+                context.lineTo(280, 196);
+                context.stroke();
+
+                context.lineTo(283, 199);
+                context.stroke();
+
+                context.lineTo(285, 188);
+                context.stroke();
+
+                context.lineTo(274, 168);
+                context.stroke();
+
+                context.lineTo(273, 169);
+                context.stroke();
+
+                context.lineTo(273, 179);
+                context.stroke();
+
+                context.lineTo(277, 195);
+                context.stroke();
+
+                context.lineTo(286, 205);
+                context.stroke();
+
+                context.lineTo(288, 208);
+                context.stroke();
+
+                context.lineTo(291, 202);
+                context.stroke();
+
+                context.lineTo(292, 193);
+                context.stroke();
+
+                context.lineTo(292, 191);
+                context.stroke();
+
+                context.lineTo(293, 191);
+                context.stroke();
+
+                context.lineTo(298, 193);
+                context.stroke();
+
+                context.lineTo(298, 190);
+                context.stroke();
+
+                context.lineTo(298, 195);
+                context.stroke();
+
+                context.lineTo(296, 201);
+                context.stroke();
+
+                context.lineTo(295, 206);
+                context.stroke();
+
+                context.lineTo(293, 209);
+                context.stroke();
+
+                context.lineTo(291, 213);
+                context.stroke();
+
+                context.lineTo(287, 215);
+                context.stroke();
+
+                context.lineTo(282, 216);
+                context.stroke();
+
+                context.lineTo(280, 216);
+                context.stroke();
+
+                context.lineTo(276, 210);
+                context.stroke();
+
+                context.lineTo(275, 202);
+                context.stroke();
+
+                context.lineTo(275, 197);
+                context.stroke();
+
+                context.lineTo(275, 195);
+                context.stroke();
+
+                context.lineTo(274, 195);
+                context.stroke();
+
+                context.lineTo(270, 199);
+                context.stroke();
+
+                context.lineTo(270, 205);
+                context.stroke();
+
+                context.lineTo(269, 210);
+                context.stroke();
+
+                context.lineTo(269, 214);
+                context.stroke();
+
+                context.lineTo(269, 218);
+                context.stroke();
+
+                context.lineTo(269, 219);
+                context.stroke();
+
+                context.lineTo(268, 220);
+                context.stroke();
+
+                context.lineTo(268, 222);
+                context.stroke();
+
+                context.lineTo(267, 224);
+                context.stroke();
+
+                context.lineTo(266, 225);
+                context.stroke();
+
+                context.lineTo(266, 226);
+                context.stroke();
+
+                context.lineTo(264, 232);
+                context.stroke();
+
+                context.lineTo(264, 233);
+                context.stroke();
+
+                context.lineTo(265, 234);
+                context.stroke();
+
+                context.lineTo(271, 236);
+                context.stroke();
+
+                context.lineTo(271, 232);
+                context.stroke();
+
+                context.lineTo(271, 231);
+                context.stroke();
+
+                context.lineTo(265, 230);
+                context.stroke();
+
+                context.lineTo(268, 230);
+                context.stroke();
+
+                context.lineTo(270, 230);
+                context.stroke();
+
+                context.lineTo(273, 230);
+                context.stroke();
+
+                context.lineTo(274, 228);
+                context.stroke();
+
+                context.lineTo(274, 228);
+                context.stroke();
+
+                context.strokeStyle = '#D7FF12';
+                context.beginPath();
+                context.moveTo(275, 28);
+
+                context.lineTo(275, 28);
+                context.stroke();
+
+                context.strokeStyle = '#D7FF12';
+                context.beginPath();
+                context.moveTo(277, 28);
+
+                context.lineTo(276, 28);
+                context.stroke();
+
+                context.lineTo(275, 28);
+                context.stroke();
+
+                context.strokeStyle = '#FFFFFF';
+                context.beginPath();
+                context.moveTo(283, 8);
+
+                context.lineTo(287, 12);
+                context.stroke();
+
+                context.lineTo(275, 11);
+                context.stroke();
+
+                context.lineTo(271, 10);
+                context.stroke();
+
+                context.lineTo(276, 13);
+                context.stroke();
+
+                context.lineTo(290, 20);
+                context.stroke();
+
+                context.lineTo(290, 19);
+                context.stroke();
+
+                context.lineTo(281, 17);
+                context.stroke();
+
+                context.lineTo(277, 17);
+                context.stroke();
+
+                context.lineTo(271, 15);
+                context.stroke();
+
+                context.lineTo(270, 14);
+                context.stroke();
+
+                context.lineTo(267, 13);
+                context.stroke();
+
+                context.lineTo(267, 12);
+                context.stroke();
+
+                context.lineTo(268, 12);
+                context.stroke();
+
+                context.lineTo(268, 12);
+                context.stroke();
+
+                context.strokeStyle = '#FFFFFF';
+                context.beginPath();
+                context.moveTo(283, 14);
+
+                context.lineTo(272, 14);
+                context.stroke();
+
+                context.lineTo(260, 12);
+                context.stroke();
+
+                context.lineTo(258, 12);
+                context.stroke();
+
+                context.lineTo(258, 13);
+                context.stroke();
+
+                context.lineTo(263, 15);
+                context.stroke();
+
+                context.lineTo(265, 15);
+                context.stroke();
+
+                context.lineTo(268, 16);
+                context.stroke();
+
+                context.lineTo(272, 16);
+                context.stroke();
+
+                context.lineTo(274, 16);
+                context.stroke();
+
+                context.lineTo(280, 17);
+                context.stroke();
+
+                context.lineTo(282, 18);
+                context.stroke();
+
+                context.lineTo(284, 19);
+                context.stroke();
+
+                context.lineTo(285, 20);
+                context.stroke();
+
+                context.lineTo(288, 21);
+                context.stroke();
+
+                context.lineTo(289, 21);
+                context.stroke();
+
+                context.lineTo(291, 21);
+                context.stroke();
+
+                context.lineTo(292, 22);
+                context.stroke();
+
+                context.lineTo(292, 23);
+                context.stroke();
+
+                context.lineTo(291, 25);
+                context.stroke();
+
+                context.lineTo(288, 24);
+                context.stroke();
+
+                context.lineTo(285, 22);
+                context.stroke();
+
+                context.lineTo(284, 22);
+                context.stroke();
+
+                context.lineTo(282, 22);
+                context.stroke();
+
+                context.lineTo(279, 21);
+                context.stroke();
+
+                context.lineTo(277, 20);
+                context.stroke();
+
+                context.lineTo(275, 20);
+                context.stroke();
+
+                context.lineTo(274, 19);
+                context.stroke();
+
+                context.lineTo(274, 18);
+                context.stroke();
+
+                context.lineTo(273, 17);
+                context.stroke();
+
+                context.lineTo(271, 16);
+                context.stroke();
+
+                context.lineTo(268, 14);
+                context.stroke();
+
+                context.lineTo(267, 14);
+                context.stroke();
+
+                context.lineTo(266, 12);
+                context.stroke();
+
+                context.lineTo(265, 11);
+                context.stroke();
+
+                context.lineTo(264, 11);
+                context.stroke();
+
+                context.lineTo(264, 10);
+                context.stroke();
+
+                context.lineTo(261, 7);
+                context.stroke();
+
+                context.lineTo(258, 3);
+                context.stroke();
+
+                context.lineTo(257, 2);
+                context.stroke();
+
+                context.lineTo(257, 1);
+                context.stroke();
+
+                context.lineWidth = 13;
+
+                context.lineWidth = 12;
+
+                context.lineWidth = 11;
+
+                context.lineWidth = 10;
+
+                context.lineWidth = 9;
+
+                context.lineWidth = 8;
+
+                context.lineWidth = 7;
+
+                context.lineWidth = 6;
+
+                context.strokeStyle = '#060801';
+                context.beginPath();
+                context.moveTo(247, 178);
+                context.lineTo(246, 227);
+                context.stroke();
+                context.closePath();
+
+                context.strokeStyle = '#060801';
+                context.beginPath();
+                context.moveTo(247, 179);
+                context.lineTo(268, 179);
+                context.stroke();
+                context.closePath();
+
+                context.strokeStyle = '#060801';
+                context.beginPath();
+                context.moveTo(266, 180);
+                context.lineTo(266, 199);
+                context.stroke();
+                context.closePath();
+
+                context.strokeStyle = '#060801';
+                context.beginPath();
+                context.moveTo(248, 199);
+                context.lineTo(266, 199);
+                context.stroke();
+                context.closePath();
+
+                context.strokeStyle = '#060801';
+                context.beginPath();
+                context.moveTo(279, 177);
+                context.lineTo(279, 228);
+                context.stroke();
+                context.closePath();
+
+                context.strokeStyle = '#060801';
+                context.beginPath();
+                context.moveTo(280, 226);
+                context.lineTo(298, 226);
+                context.stroke();
+                context.closePath();
+
+                context.strokeStyle = '#060801';
+                context.beginPath();
+                context.moveTo(296, 225);
+                context.lineTo(295, 206);
+                context.stroke();
+                context.closePath();
+
+                context.strokeStyle = '#060801';
+                context.beginPath();
+                context.moveTo(295, 207);
+                context.lineTo(280, 207);
+                context.stroke();
+                context.closePath();
+
+                context.lineWidth = 4;
+
+                context.strokeStyle = '#FA0000';
+                context.beginPath();
+                context.moveTo(302, 169);
+                context.lineTo(237, 235);
+                context.stroke();
+                context.closePath();
+            </script>
+        </form>
+    </article>
+    <aside id="java10">
+        <iframe src="Kontrolki_JS.html">
+        </iframe>
+    </aside>
+    <footer>
+        <center>
+            Szymon Mortka <br />nr.ideksu:149435 <br />Grupa: L2 <br />szymon.mortka@student.put.poznan.pl
+        </center>
+
+    </footer>
+</body>
+</html>

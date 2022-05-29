@@ -7,30 +7,30 @@
 }
 nav ul
 {
-    width:190px;
-    padding:2px 2px 1px 2px;
+    width:14vw;
+    padding:0.14vw 0.14vw 0.07vw 0.14vw;
     background-color: #9ce;
     border: 3px double #28e;
 }
 nav ul li
 {
-    border-bottom: 1px solid #9ce;
+    border-bottom: 0.07vw solid #9ce;
 }
 nav ul a:link, ul a:visited
 {
     display:block;
-    width:166px;
+    width:12vw;
     text-decoration:none;
-    padding: 7px;
+    padding: 0.5vw;
     font-weight: bold;
     background-color:#27c;
     color:#def;
-    border-left:10px solid #25b;
+    border-left:0.73vw solid #25b;
 }
 nav ul a:hover
 {
-    width:156px;
+    width:11vw;
     background-color:#28e;
     color:#fff;
-    border-left:20px solid #26d;
+    border-left:1.4vw solid #26d;
 }

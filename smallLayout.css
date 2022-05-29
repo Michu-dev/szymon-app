@@ -1,7 +1,7 @@
 body
 {
-    width:450px;
-    height:400px;
+    width:88vw;
+    height:137vh;
     margin:auto;
 }
 nav, article, aside
@@ -12,31 +12,31 @@ nav, article, aside
 nav
 {
     background:#66ccff;
-    width:100px;
-    height:314px;
+    width:15vw;
+    height:108vh;
 }
 body > article
 {
-    width:390px;
-    height:300px;
-    padding:2px;
-    border:1px solid gray;
-    background:radial-gradient(circle at 200px 250px, #3bf 5%, #9df 15%, #6cf 70%);
+    width:70vw;
+    height:106vh;
+    padding:0.36vw;
+    border:0.14vw solid gray;
+    background:radial-gradient(circle at 400px 500px, #3bf 5%, #9df 15%, #6cf 70%);
     overflow:auto;
 }
 body > header
 {
-    width:598px;
-    height:50px;
-    background-color:dodgerblue;
+    width:88vw;
+    height:15vh;
+    background-color:rgb(42, 43, 44);
     text-align:center;
-    padding-top:5px;
-    border:1px solid brown;
+    padding-top:0.73vw;
+    border:3px solid brown;
 }
 aside
 {
-    width:100px;
-    height:414px;
+    width:15vw;
+    height:109vh;
     background-color:ActiveCaption;
 }
 body > footer
@@ -44,8 +44,8 @@ body > footer
     border-width:8px 6px 4px 2px;
     border-style:dotted;
     border-color:green;
-    height:40px;
-    width:596px;
+    height:12vh;
+    width:88vw;
     float:left;
 }
 iframe
@@ -53,4 +53,7 @@ iframe
     width:100%;
     height:100%;
     border:none;
+}
+#java10 {
+    display: none;
 }

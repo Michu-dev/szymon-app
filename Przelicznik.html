@@ -4,15 +4,13 @@
 <head>
     <meta charset="utf-8" />
     <title>TIiSKwE</title>
-    <!-- <link rel="stylesheet" type="text/css" href="Layout.css" />
-    <link rel="stylesheet" type="text/css" href="Menu.css" /> -->
+    <!-- <link rel="stylesheet" type="text/css" href="Layout.css" /> -->
+    <link rel="stylesheet" type="text/css" href="Menu.css" />
 
     <link rel="stylesheet" media="screen and (max-width: 480px)" href="smallLayout.css" />
     <link rel="stylesheet" media="screen and (min-width: 480px)" href="Layout.css" />
 
-    
-    <link rel="stylesheet" media="screen and (max-width: 480px)" href="smallMenu.css" />
-    <link rel="stylesheet" media="screen and (min-width: 480px)" href="Menu.css" />
+
     <style type="text/css">
         #calculator
         {
@@ -20,7 +18,7 @@
             margin: auto;
             border: 2px solid black;
             padding: 10px;
-            width: 467px;
+            width: 500px;
             background-color: lightgrey;
         }
         
@@ -64,23 +62,26 @@
     <script type="text/javascript">
         function Calculator()
         {
-            var a = parseFloat(document.getElementById('a').value);
-            var b = parseFloat(document.getElementById('b').value);
-            var oper = document.getElementById('operator').value;
+            var cenaBarylki = parseFloat(document.getElementById('a').value);
+            var podatek = parseFloat(document.getElementById('b').value);
+            var oplata = parseFloat(document.getElementById('c').value);
+            var akcyza = parseFloat(document.getElementById('d').value);
+            // var oper = document.getElementById('operator').value;
 
+            var result = cenaBarylki + cenaBarylki * podatek / 100  + cenaBarylki * oplata / 100 + cenaBarylki *akcyza / 100;
             
 
-            switch (oper)
-            {
-                case '+': var result = (a) + (b);
-                    break;
-                case '-': var result = (a) - (b);
-                    break;
-                case '*': var result = (a) * (b);
-                    break;
-                case '/': var result = (a) / (b);
-                    break;
-            }
+            // switch (oper)
+            // {
+            //     case '+': var result = (a) + (b);
+            //         break;
+            //     case '-': var result = (a) - (b);
+            //         break;
+            //     case '*': var result = (a) * (b);
+            //         break;
+            //     case '/': var result = (a) / (b);
+            //         break;
+            // }
 
             document.getElementById('result').value = result;
         }
@@ -88,58 +89,33 @@
 </head>
 <body>
     <header style="background-color:aqua">
-        <h1>To jest nagłówek naszej stony WWW</h1>
+        <h1>Poznańska benzyna</h1>
     </header>
     <nav>
         <h2>Menu:</h2>
         <ul>
             <li><a href="Index.html" target="_self">Strona główna</a></li>
-            <li><a href="Tabelka.html" target="_self">Tabela dyżurów</a></li>
+            <li><a href="Tabelka.html" target="_self">Najtańsze stacje</a></li>
             <li><a href="Info.html" target="_self">Informacje</a></li>
             <li><a href="Form.html" target="_self">Formularz</a></li>
             <li><a href="MAP_tag.html" target="_self">Znacznik MAP</a></li>
             <li><a href="JavaScript1.html" target="_self">JavaScript1</a></li>
-            <li><a href="JavaScript2.html" target="_self">JavaScript2</a></li>
+            <li><a href="Przelicznik.html" target="_self">Przelicznik</a></li>
             <li><a href="JavaScript3.html" target="_self">JavaScript3</a></li>
-            <li><a href="Canvas1.html" target="_self">Canvas1</a></li>
-            <li><a href="Canvas2.html" target="_self">Canvas2</a></li>
-            <li><a href="http://www.put.poznan.pl" target="_blank">Strona PP</a></li>
-            <li><a href="http://www.creef.put.poznan.pl" target="_blank">WARiE</a></li>
-            <li><a href="http://www.isie.put.poznan.pl" target="_blank">WIŚiE</a></li>
+            <li><a href="Logo.html" target="_self">Logo firmy</a></li>
+            <li><a href="Konkurs.html" target="_self">Konkurs na nowe logo</a></li>
+            
         </ul>
     </nav>
     <article>
-        <h2>Przykłady użycia sktryptów Java - część II</h2>
-        <script type="text/javascript">
-            var zmienna = "Ala Ma Kota.";
-
-            document.write(zmienna + "<br/>");
-            document.write("Zdanie ma " + zmienna.length + " znaków.<br/>");
-
-            document.write(zmienna.charAt(4) + "<br/>");
-            document.write(zmienna.charAt(zmienna.length - 3) + "<br/>");
-
-            document.write(zmienna.toUpperCase() + "<br/>");
-            document.write(zmienna.toLowerCase() + "<br/>");
-
-            document.write(zmienna.substring(0, 3) + "<br/>");
-            document.write(zmienna.substring(7) + "<br/>");
-
-            for (var i = 0; i < zmienna.length; i++) {
-                for (var j = 0; j < i; j++) {
-                    document.write("&nbsp;&nbsp;&nbsp;");
-                }
-                document.write(zmienna.charAt(i) + "<br/>");
-            }
-        </script>
-        <br />
-        <br />
+        <h2>Przykład kalkulatora</h2>
+        
         <form id="calculator">
             <h4>Prosty Przelicznik Podatkowy</h4>
             <table>
                 <tr>
                     <td>
-                        <input type="text" id="a" class="number" placeholder="Liczba A" />
+                        <input type="text" id="a" class="number" placeholder="Cena baryłki" />
                     </td>
                     <!-- <td>
                         <select id="operator">
@@ -150,29 +126,45 @@
                         </select><br /><br />
                     </td> -->
                     <td>
-                        <input type="text" id="b" class="number" placeholder="Liczba B" />
+                        <input type="text" id="b" class="number" style="width: 7vw;" placeholder="Podatek VAT [%]" />
                     </td>
                     <td>
-                        <button type="button" class="result" onclick="Calculator()">=</button>
+                        <input type="text" id="c" class="number" style="width: 8vw;" placeholder="Opłata paliwowa [%]" />
                     </td>
                     <td>
-                        <input type="text" id="result" class="number" placeholder="Wynik" disabled="disabled" />
+                        <input type="text" id="d" class="number" placeholder="Akcyza [%]" />
+                    </td>
+                    
+                    
+                </tr>
+                
+                <tr>
+                    <td colspan="5">
+                        <button type="button" class="result" style="width: 13vw" onclick="Calculator()">Sprawdź wynik</button>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="5">
-                        <button type="reset" class="result" style="width: 200px" ">R e s e t</button>
+                        <button type="reset" class="result" style="width: 13vw" ">R e s e t</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <input type="text" id="result" class="number" style="width: 8vw;" placeholder="Cena na stacji" disabled="disabled" />
                     </td>
                 </tr>
             </table>
         </form>
     </article>
-    <aside>
+    <aside id="java10">
         <iframe src="Kontrolki_JS.html">
         </iframe>
     </aside>
     <footer>
-        To jest stopka naszej strony.
+        <center>
+            Szymon Mortka <br />nr.ideksu:149435 <br />Grupa: L2 <br />szymon.mortka@student.put.poznan.pl
+        </center>
+
     </footer>
 </body>
 </html>

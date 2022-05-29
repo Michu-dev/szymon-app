@@ -4,15 +4,13 @@
 <head>
     <meta charset="utf-8" />
     <title>TIiSKwE</title>
-    <!-- <link rel="stylesheet" type="text/css" href="Layout.css" />
-    <link rel="stylesheet" type="text/css" href="Menu.css" /> -->
+    <!-- <link rel="stylesheet" type="text/css" href="Layout.css" /> -->
+    <link rel="stylesheet" type="text/css" href="Menu.css" />
 
     <link rel="stylesheet" media="screen and (max-width: 480px)" href="smallLayout.css" />
     <link rel="stylesheet" media="screen and (min-width: 480px)" href="Layout.css" />
 
     
-    <link rel="stylesheet" media="screen and (max-width: 480px)" href="smallMenu.css" />
-    <link rel="stylesheet" media="screen and (min-width: 480px)" href="Menu.css" />
     <script type="text/javascript" language="javascript">
         obraz_1 = new Image();
         obraz_2 = new Image();
@@ -25,59 +23,55 @@
 </head>
 <body>
     <header style="background-color:aqua">
-        <h1>To jest nagłówek naszej stony WWW</h1>
+        <h1>Poznańska benzyna</h1>
     </header>
     <nav>
         <h2>Menu:</h2>
         <ul>
             <li><a href="Index.html" target="_self">Strona główna</a></li>
-            <li><a href="Tabelka.html" target="_self">Tabela dyżurów</a></li>
+            <li><a href="Tabelka.html" target="_self">Najtańsze stacje</a></li>
             <li><a href="Info.html" target="_self">Informacje</a></li>
             <li><a href="Form.html" target="_self">Formularz</a></li>
             <li><a href="MAP_tag.html" target="_self">Znacznik MAP</a></li>
             <li><a href="JavaScript1.html" target="_self">JavaScript1</a></li>
-            <li><a href="JavaScript2.html" target="_self">JavaScript2</a></li>
+            <li><a href="Przelicznik.html" target="_self">Przelicznik</a></li>
             <li><a href="JavaScript3.html" target="_self">JavaScript3</a></li>
-            <li><a href="Canvas1.html" target="_self">Canvas1</a></li>
-            <li><a href="Canvas2.html" target="_self">Canvas2</a></li>
-            <li><a href="http://www.put.poznan.pl" target="_blank">Strona PP</a></li>
-            <li><a href="http://www.creef.put.poznan.pl" target="_blank">WARiE</a></li>
-            <li><a href="http://www.isie.put.poznan.pl" target="_blank">WIŚiE</a></li>
+            <li><a href="Logo.html" target="_self">Logo firmy</a></li>
+            <li><a href="Konkurs.html" target="_self">Konkurs na nowe logo</a></li>
+            
         </ul>
     </nav>
     <article>
-        <h2>Przykład wykorzystania znacznika MAP</h2>
+        <h2>Stacje firmy Orlen w pobliżu Politechniki Poznańskiej</h2>
         <p>
-            <i>Kliknij w dowolny element rysunku.</i>
+            <i>Kliknij w dowolną stację aby uzyskac więcej informacji.</i>
         </p>
         <figure>
-            <img src="home_1.png" name="rysunek_domku" usemap="#przyklad_znacznika_MAP" />
-            <map name="przyklad_znacznika_MAP">
-                <area shape="circle" coords="197, 111, 25" alt="brak danych"
-                      href="http://www.velux.pl" target="_blank" />
-                <area shape="rect" coords="101, 198, 172, 269" alt="brak danych"
-                      href="javascript:alert('To jest duże okno.')"
-                      onmouseover="document.images.rysunek_domku.src = obraz_3.src;"
-                      onmouseout="document.images.rysunek_domku.src = obraz_2.src;" />
-                <area shape="rect" coords="257, 253, 318, 353" alt="brak danych"
-                      href="http://www.kmt.com.pl" target="_blank" />
-                <area shape="rect" coords="49, 155, 348, 355" alt="brak danych"
-                      href="javascript:alert('To jest ściana domku.')" 
-                      onmouseover="document.images.rysunek_domku.src = obraz_2.src;"
-                      onmouseout="document.images.rysunek_domku.src = obraz_1.src;" />
-                <area shape="poly" coords="198,52, 376, 153, 22, 154" alt="brak danych"
-                      href="http://www.ruukki.com/pol/dachy" target="_blank" />
-                <area shape="poly" coords="306, 38, 305, 112, 262, 91, 262, 38" alt="brak danych"
-                      href="javascript:alert('To jest komin.\r\nBędzie dym :-)')" />
+            <img src="moj_obraz_2.png" name="mapa" usemap="#znacznik_MAP" />
+            <map name="znacznik_MAP">
+                <area shape="circle" coords="141, 66, 14" alt="brak danych"
+                      href="https://www.google.com/maps/place/Stacja+Paliw+ORLEN/@52.4006351,16.8886417,14z/data=!4m9!1m2!2m1!1sstacje+orlen+pozna%C5%84!3m5!1s0x47045b3aa2aeffe3:0x5486158e9f457f41!8m2!3d52.4006354!4d16.9215992!15sChRzdGFjamUgb3JsZW4gcG96bmHFhCIDiAEBkgELZ2FzX3N0YXRpb24" target="_blank" />
+                <area shape="circle" coords="73, 220, 14" alt="brak danych"
+                      href="https://www.google.com/maps/place/Stacja+Paliw+ORLEN/@52.3925699,16.8908718,14z/data=!4m9!1m2!2m1!1sstacje+orlen+pozna%C5%84!3m5!1s0x47045ad76a4b1d2b:0xb502532299c56ca5!8m2!3d52.3858668!4d16.9110767!15sChRzdGFjamUgb3JsZW4gcG96bmHFhCIDiAEBkgELZ2FzX3N0YXRpb24" "target=" _blank" />
+                <area shape="circle" coords="280, 243, 14" alt="brak danych"
+                      href="https://www.google.com/maps/place/Stacja+Paliw+ORLEN/@52.3880128,16.9117287,14z/data=!4m9!1m2!2m1!1sstacje+orlen+pozna%C5%84!3m5!1s0x47045afd4b9542c1:0x18256e5df51704be!8m2!3d52.3835667!4d16.9433716!15sChRzdGFjamUgb3JsZW4gcG96bmHFhCIDiAEBkgELZ2FzX3N0YXRpb24" target="_blank" />
+                <area shape="circle" coords="433, 201, 14" alt="brak danych"
+                      href="https://www.google.com/maps/place/Stacja+Paliw+ORLEN/@52.3879604,16.9507816,14z/data=!4m9!1m2!2m1!1sstacje+orlen+pozna%C5%84!3m5!1s0x47045ba957df4679:0xdfd8b5b09cc90ef2!8m2!3d52.3876705!4d16.9672547!15sChRzdGFjamUgb3JsZW4gcG96bmHFhCIDiAEBkgELZ2FzX3N0YXRpb24" target="_blank" />
+                <area shape="circle" coords="589, 370, 14" alt="brak danych"
+                      href="https://www.google.com/maps/place/Stacja+Paliw+ORLEN/@52.3879604,16.9507816,14z/data=!4m9!1m2!2m1!1sstacje+orlen+pozna%C5%84!3m5!1s0x47045ba957df4679:0xdfd8b5b09cc90ef2!8m2!3d52.3876705!4d16.9672547!15sChRzdGFjamUgb3JsZW4gcG96bmHFhCIDiAEBkgELZ2FzX3N0YXRpb24" target="_blank" />
+                />
             </map>
         </figure>
     </article>
-    <aside>
+    <aside id="java10">
         <iframe src="Kontrolki_JS.html">
         </iframe>
     </aside>
     <footer>
-        To jest stopka naszej strony.
+        <center>
+            Szymon Mortka <br />nr.ideksu:149435 <br />Grupa: L2 <br />szymon.mortka@student.put.poznan.pl
+        </center>
+
     </footer>
 </body>
 </html>

@@ -4,8 +4,10 @@
 <head>
     <meta charset="utf-8" />
     <title>Tabela w HTML</title>
-    <link rel="stylesheet" type="text/css" href="Layout.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="Layout.css" /> -->
     <link rel="stylesheet" type="text/css" href="Menu.css" />
+    <link rel="stylesheet" media="screen and (max-width: 660px)" href="smallLayout.css" />
+    <link rel="stylesheet" media="screen and (min-width: 660px)" href="Layout.css" />
     <style>
         /* selektor elemnetu po id*/
         #PoleTabeli
@@ -65,13 +67,19 @@
             width: 18px;
         }
 
-        td.wolny {
-            background-color: gray;
+        td.paliwo {
+            background-color: forestgreen;
+            color: snow;
         }
 
-        td.zajety {
+        td.LPG {
             background-color: pink;
             color: black;
+            width: 67px;
+        }
+        td.ON {
+            color: red;
+            background-color: black;
         }
 
         tbody #name {
@@ -82,39 +90,38 @@
 </head>
 <body>
     <header style="background-color:yellow; border:3px dashed blue">
-        <h1>To jest nagłówek naszej stony WWW</h1>
+        <h1>Poznańska benzyna</h1>
     </header>
     <nav>
         <h2>Menu:</h2>
         <ul>
             <li><a href="Index.html" target="_self">Strona główna</a></li>
-            <li><a href="Tabelka.html" target="_self">Tabela dyżurów</a></li>
+            <li><a href="Tabelka.html" target="_self">Najtańsze stacje</a></li>
             <li><a href="Info.html" target="_self">Informacje</a></li>
             <li><a href="Form.html" target="_self">Formularz</a></li>
             <li><a href="MAP_tag.html" target="_self">Znacznik MAP</a></li>
             <li><a href="JavaScript1.html" target="_self">JavaScript1</a></li>
-            <li><a href="JavaScript2.html" target="_self">JavaScript2</a></li>
+            <li><a href="Przelicznik.html" target="_self">Przelicznik</a></li>
             <li><a href="JavaScript3.html" target="_self">JavaScript3</a></li>
-            <li><a href="Canvas1.html" target="_self">Canvas1</a></li>
-            <li><a href="Canvas2.html" target="_self">Canvas2</a></li>
-            <li><a href="http://www.put.poznan.pl" target="_blank">Strona PP</a></li>
-            <li><a href="http://www.creef.put.poznan.pl" target="_blank">WARiE</a></li>
-            <li><a href="http://www.isie.put.poznan.pl" target="_blank">WIŚiE</a></li>
+            <li><a href="Logo.html" target="_self">Logo firmy</a></li>
+            <li><a href="Konkurs.html" target="_self">Konkurs na nowe logo</a></li>
+            
         </ul>
     </nav>
     <article>
         <div id="PoleTabeli">
-            <h2>Tabela dyżurów pracowników</h2>
+            <h2>Zestawienie najtanszych stacji w Poznaniu</h2>
             <table border="1">
                 <thead>
                     <tr>
-                        <th rowspan="2">Lp.</th>
-                        <th colspan="2">Pracownik</th>
-                        <th rowspan="2">Pokój</th>
-                        <th colspan="12">Godziny</th>
+                        <th colspan="1">Lp.</th>
+                        <th colspan="1">Stacja</th>
+                        <th colspan="1">Ulica</th>
+                        <th colspan="1">Numer</th>
+                        <th colspan="12">Cena paliwa</th>
                     </tr>
                     <tr>
-                        <th rowspan="2">Imię</th>
+                        <!--<th rowspan="2">Imię</th>
                         <th rowspan="2">Nazwisko</th>
                         <th class="godziny">7</th>
                         <th class="godziny">8</th>
@@ -127,107 +134,110 @@
                         <th class="godziny">15</th>
                         <th class="godziny">16</th>
                         <th class="godziny">17</th>
-                        <th class="godziny">18</th>
+                        <th class="godziny">18</th>-->
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>1.</td>
-                        <td id="name">Jan</td>
-                        <td id="name">Kowalski</td>
-                        <td rowspan="2">111</td>
-                        <td colspan="3" class="zajety">7:00-10:00</td>
-                        <td colspan="9" class="wolny"></td>
+                        <td rowspan="2" id="name">PKN Orlen</td>
+                        <td id="name">Stróżyńskiego</td>
+                        <td>21</td>
+                        <td colspan="6" class="paliwo">95/5,75 zł</td>
+                        <td colspan="6" class="LPG">LPG 3,49 zł</td>
                     </tr>
                     <tr>
                         <td>2.</td>
-                        <td id="name">Maria</td>
-                        <td id="name">Nowak</td>
-                        <td colspan="6" class="wolny"></td>
-                        <td colspan="6" class="zajety">13:00-19:00</td>
+                        <td id="name">Warszawska</td>
+                        <td>231</td>
+                        <td colspan="12" class="paliwo">95/7,21 zł</td>
+                        
                     </tr>
                     <tr>
                         <td>3.</td>
-                        <td id="name">Karol</td>
-                        <td id="name">Dobry</td>
-                        <td>118</td>
-                        <td colspan="6" class="zajety">7:30-13:00</td>
-                        <td colspan="6" class="wolny"></td>
+                        <td id="name">Avia</td>
+                        <td rowspan="2" id="name">Grunwaldzka</td>
+                        <td>104</td>
+                        <td colspan="4" class="paliwo">95/7,11 zł</td>
+                        <td colspan="4" class="LPG">LPG 3,57 zł</td>
+                        <td colspan="4" class="ON">ON 7,01 zł</td>
                     </tr>
                     <tr>
                         <td>4.</td>
-                        <td id="name">Łukasz</td>
-                        <td id="name">Chudy</td>
-                        <td rowspan="2">106</td>
-                        <td colspan="3" class="zajety">7:00-10:00</td>
-                        <td colspan="3" class="wolny"></td>
-                        <td colspan="3" class="zajety">13:00-16:00</td>
-                        <td colspan="3" class="wolny"></td>
+                        <td rowspan="3" id="name">bp</td>
+                        <td>108</td>
+                        <td colspan="4" class="paliwo">95/7,24 zł</td>
+                        <td colspan="4" class="LPG">LPG 3,69 zł</td>
+                        <td colspan="4" class="ON">ON 7,22 zł</td>
                     </tr>
                     <tr>
                         <td>5.</td>
-                        <td id="name">Zofia</td>
-                        <td id="name">Wilk</td>
-                        <td colspan="8" class="zajety">7:00-15:00</td>
-                        <td colspan="4" class="wolny"></td>
+                        <td id="name">Przybyszewskiego</td>
+                        <td>39A</td>
+                        <td colspan="4" class="paliwo">95/7,24 zł</td>
+                        <td colspan="4" class="LPG">LPG 3,69 zł</td>
+                        <td colspan="4" class="ON">ON 7,22 zł</td>
+
                     </tr>
                     <tr>
                         <td>6.</td>
-                        <td id="name">Damian</td>
-                        <td id="name">Iksiński</td>
-                        <td>110</td>
-                        <td colspan="4" class="wolny"></td>
-                        <td colspan="8" class="zajety">11:00-19:00</td>
+                        <td id="name">Rondo Obornickie</td>
+                        <td>-</td>
+                        <td colspan="4" class="paliwo">95/7,16 zł</td>
+                        <td colspan="4" class="LPG">LPG 3,56 zł</td>
+                        <td colspan="4" class="ON">ON 7,22 zł</td>
+                        
                     </tr>
                     <tr>
                         <td>7.</td>
-                        <td id="name">Anna</td>
-                        <td id="name">Maria</td>
-                        <td rowspan="3">113</td>
-                        <td colspan="3" class="zajety">7:00-10:00</td>
-                        <td colspan="1" class="wolny"></td>
-                        <td colspan="3" class="zajety">11:00-14:00</td>
-                        <td colspan="2" class="wolny"></td>
-                        <td colspan="3" class="zajety">16:00-19:00</td>
+                        <td id="name">Auchan</td>
+                        <td id="name">Głogowska</td>
+                        <td>432</td>
+                        <td colspan="6" class="paliwo">95/7,23 zł</td>
+                        <td colspan="6" class="ON">ON 7,19 zł</td>
+                        
+
                     </tr>
                     <tr>
                         <td>8.</td>
-                        <td id="name">Dorota</td>
-                        <td id="name">Wysocka</td>
-                        <td colspan="5" class="zajety">7:00-12:00</td>
-                        <td colspan="4" class="wolny"></td>
-                        <td colspan="3" class="zajety">16:00-19:00</td>
+                        <td id="name">Lotos</td>
+                        <td id="name">Chocieszewska</td>
+                        <td>49</td>
+                        <td colspan="12" class="paliwo">95/7,14 zł</td>
+                        
                     </tr>
                     <tr>
                         <td>9.</td>
-                        <td id="name">Michał</td>
-                        <td id="name">Michałek</td>
-                        <td colspan="2" class="wolny"></td>
-                        <td colspan="4" class="zajety">9:00-13:00</td>
-                        <td colspan="2" class="wolny"></td>
-                        <td colspan="4" class="zajety">15:00-19:00</td>
+                      <td id="name">Prywatna</td>
+                        <td id="name">Juraszów</td>
+                        <td>22</td>
+                        <td colspan="4" class="paliwo">95/7,22 zł</td>
+                        <td colspan="4" class="LPG">LPG 3,52 zł</td>
+                        <td colspan="4" class="ON">ON 7,06 zł</td>
+                      
                     </tr>
                     <tr>
                         <td>10.</td>
-                        <td id="name">Andrzej</td>
-                        <td id="name">Kobza</td>
-                        <td>101</td>
-                        <td colspan="2" class="wolny"></td>
-                        <td colspan="3" class="zajety">9:00-12:00</td>
-                        <td colspan="2" class="wolny"></td>
-                        <td colspan="3" class="zajety">14:00-17:00</td>
-                        <td colspan="2" class="wolny"></td>
+                        <td id="name">Intermarch</td>
+                        <td id="name">Umultowska</td>
+                        <td>32</td>
+                        <td colspan="6" class="paliwo">95/7,23 zł</td>
+                        <td colspan="6" class="ON">On 7,19 zł</td>
+                       
                     </tr>
                 </tbody>
             </table>
         </div>
     </article>
-    <aside>
+    <aside id="java10">
         <iframe src="Kontrolki_JS.html">
         </iframe>
     </aside>
     <footer>
-        To jest stopka naszej strony.
+        <center>
+            Szymon Mortka <br />nr.ideksu:149435 <br />Grupa: L2 <br />szymon.mortka@student.put.poznan.pl
+        </center>
+
     </footer>
 </body>
 </html>
