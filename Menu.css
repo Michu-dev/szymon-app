@@ -9,12 +9,12 @@ nav ul
 {
     width:14vw;
     padding:0.14vw 0.14vw 0.07vw 0.14vw;
-    background-color: #9ce;
-    border: 3px double #28e;
+    background-color: rgb(57, 195, 219);
+    border: 3px double rgb(34, 238, 112);
 }
 nav ul li
 {
-    border-bottom: 0.07vw solid #9ce;
+    border-bottom: 0.07vw solid rgb(120, 243, 167);
 }
 nav ul a:link, ul a:visited
 {
@@ -23,9 +23,9 @@ nav ul a:link, ul a:visited
     text-decoration:none;
     padding: 0.5vw;
     font-weight: bold;
-    background-color:#27c;
+    background-color:rgb(5, 107, 13);
     color:#def;
-    border-left:0.73vw solid #25b;
+    border-left:0.73vw solid rgb(1, 85, 36);
 }
 nav ul a:hover
 {

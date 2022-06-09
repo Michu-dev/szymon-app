@@ -11,7 +11,7 @@ nav, article, aside
 }
 nav
 {
-    background:#66ccff;
+    background:lightgreen;
     width:15vw;
     height:108vh;
 }
@@ -21,7 +21,7 @@ body > article
     height:106vh;
     padding:0.36vw;
     border:0.14vw solid gray;
-    background:radial-gradient(circle at 400px 500px, #3bf 5%, #9df 15%, #6cf 70%);
+    background: lightgreen;
     overflow:auto;
 }
 body > header
